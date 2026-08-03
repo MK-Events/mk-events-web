@@ -1,0 +1,37 @@
+@use 'styles/breakpoints' as *;
+
+.section {
+  padding: 5rem 0;
+}
+
+.masonry {
+  columns: 2;
+  column-gap: 1rem;
+  margin-top: var(--mantine-spacing-xl);
+
+  @media (min-width: $mantine-breakpoint-md) {
+    columns: 3;
+  }
+
+  @media (min-width: $mantine-breakpoint-xl) {
+    columns: 4;
+  }
+}
+
+.item {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  border-radius: var(--mantine-radius-md);
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 250ms ease;
+  }
+
+  &:hover img {
+    transform: scale(1.04);
+  }
+}

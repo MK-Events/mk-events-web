@@ -1,0 +1,30 @@
+{
+  "sections": {
+    "about": {
+      "title": "About this event",
+      "caption": "Don't miss our highlighted celebration"
+    },
+    "tickets": {
+      "title": "Ticket types"
+    },
+    "gallery": {
+      "title": "Experience the moments"
+    },
+    "cta": {
+      "title": "Ready to join us?",
+      "caption": "Reserve your spot today and celebrate with us."
+    },
+    "faq": {
+      "title": "Frequently asked questions"
+    }
+  },
+  "misc": {
+    "locationPinLabel": "Location Pin",
+    "eventPassLabel": "Event Pass",
+    "perPersonLabel": "Per person",
+    "noteLabel": "Note",
+    "ticketNoticeLabel": "Please Note",
+    "eventScheduleLabel": "Event Schedule",
+    "eventHighlightLabel": "Event Highlight"
+  }
+}

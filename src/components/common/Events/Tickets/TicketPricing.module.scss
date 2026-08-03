@@ -1,0 +1,138 @@
+.ticket {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  overflow: visible;
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+
+  cursor: default;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--mantine-shadow-lg);
+  }
+
+  &::before,
+  &::after {
+    content: '';
+
+    position: absolute;
+    top: 50%;
+
+    width: 24px;
+    height: 24px;
+
+    border-radius: 50%;
+
+    background: var(--mantine-color-body);
+
+    border: 1px solid var(--mantine-color-default-border);
+
+    transform: translateY(-50%);
+    z-index: 2;
+  }
+
+  &::before {
+    left: -12px;
+  }
+
+  &::after {
+    right: -12px;
+  }
+}
+
+.selected {
+  border: 2px solid var(--mantine-primary-color-filled);
+  background: var(--mantine-primary-color-light);
+
+  box-shadow: var(--mantine-shadow-md);
+
+  &:hover {
+    border-color: var(--mantine-primary-color-filled-hover);
+    box-shadow: var(--mantine-shadow-xl);
+  }
+}
+
+.price {
+  font-size: 2.75rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--mantine-primary-color-filled);
+}
+
+.priceLabel {
+  margin-top: 4px;
+
+  color: var(--mantine-color-dimmed);
+
+  font-size: var(--mantine-font-size-sm);
+}
+
+.header {
+  text-align: center;
+}
+
+.footer {
+  margin-top: auto;
+}
+
+.note {
+  background: var(--mantine-primary-color-light);
+
+  border-radius: var(--mantine-radius-md);
+
+  padding: 12px;
+}
+
+.noteTitle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  margin-bottom: 8px;
+
+  font-weight: 600;
+}
+
+.benefit {
+  font-weight: 500;
+}
+
+.ticket :global(.mantine-Divider-root) {
+  border-style: dashed;
+}
+
+.ticket :global(.mantine-Button-root) {
+  transition: transform 150ms ease;
+}
+
+.ticket :global(.mantine-Button-root:hover) {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 48em) {
+  .ticket::before,
+  .ticket::after {
+    width: 18px;
+    height: 18px;
+  }
+
+  .ticket::before {
+    left: -9px;
+  }
+
+  .ticket::after {
+    right: -9px;
+  }
+
+  .price {
+    font-size: 2.25rem;
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "name": "mk-events-web",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "start": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^5.4.0",
+    "@mantine/carousel": "^9.4.2",
+    "@mantine/core": "^9.4.2",
+    "@mantine/dates": "^9.4.2",
+    "@mantine/hooks": "^9.4.2",
+    "@mantine/notifications": "^9.4.2",
+    "@reduxjs/toolkit": "^2.12.0",
+    "@tabler/icons-react": "^3.45.0",
+    "axios": "^1.18.1",
+    "clsx": "^2.1.1",
+    "dayjs": "^1.11.21",
+    "embla-carousel": "^8.6.0",
+    "embla-carousel-react": "^8.6.0",
+    "mk-types": "github:MK-Events/mk-types",
+    "react": "^19.2.7",
+    "react-device-detect": "^2.2.3",
+    "react-dom": "^19.2.7",
+    "react-hook-form": "^7.82.0",
+    "react-redux": "^9.3.0",
+    "react-router-dom": "^7.11.0",
+    "uuid": "^14.0.1",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^6.0.2",
+    "@types/node": "^24.13.2",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.1.0",
+    "oxlint": "^1.71.0",
+    "prettier": "^3.9.5",
+    "sass": "^1.101.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.1.1",
+    "vite-plugin-pwa": "^1.3.0",
+    "vite-tsconfig-paths": "^6.1.1"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx,js,jsx,json,css,scss,md}": [
+      "prettier --write",
+      "npm run lint --silent || true"
+    ]
+  }
+}

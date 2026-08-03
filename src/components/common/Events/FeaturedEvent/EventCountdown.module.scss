@@ -1,0 +1,23 @@
+@use 'styles/breakpoints' as *;
+
+.box {
+  min-width: 80px;
+  text-align: center;
+  background: var(--mantine-color-body);
+}
+
+.status {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.noStyle {
+  text-decoration: unset;
+  color: unset;
+}
+
+@media (max-width: $mantine-breakpoint-md) {
+  .box {
+    min-width: 60px;
+  }
+}

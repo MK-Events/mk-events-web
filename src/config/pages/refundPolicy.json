@@ -1,0 +1,26 @@
+{
+  "title": "Refund & Cancellation Policy",
+  "lastUpdated": "22 July 2026",
+  "sections": [
+    {
+      "title": "Ticket Purchases",
+      "content": "All ticket purchases are generally non-refundable unless the event is cancelled by MK Events."
+    },
+    {
+      "title": "Event Cancellation",
+      "content": "If an event is cancelled by the organizer, eligible participants will receive a refund through the original payment method."
+    },
+    {
+      "title": "Event Postponement",
+      "content": "Tickets will remain valid for the rescheduled event. Refunds may be provided only if explicitly announced."
+    },
+    {
+      "title": "Duplicate Payments",
+      "content": "Duplicate or failed payment transactions will be reviewed and any applicable refund will be processed within 7 to 10 business days."
+    },
+    {
+      "title": "Contact",
+      "content": "For refund-related queries, please contact us at {{supportEmail}}."
+    }
+  ]
+}

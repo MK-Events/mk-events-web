@@ -1,0 +1,16 @@
+.valuesSection {
+  padding: 5rem 0;
+}
+
+.valueCard {
+  height: 100%;
+  border: 1px solid var(--mantine-color-gray-2);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--mantine-shadow-md);
+  }
+}

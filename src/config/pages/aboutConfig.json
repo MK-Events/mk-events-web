@@ -1,0 +1,116 @@
+{
+  "sections": {
+    "overview": {
+      "title": "Who we are !",
+      "cover": "96bf082d-8472-4168-a89f-c164d85e8af7",
+      "content": "MK Events is an event management company dedicated to creating unforgettable experiences through thoughtful planning, creative concepts, and flawless execution. From large-scale cultural celebrations like Onam Blast to corporate gatherings, community festivals, and private events, we bring people together with engaging activities, professional coordination, quality entertainment, and attention to every detail. Our goal is to transform every event into an experience that guests remember long after it ends."
+    },
+    "mission": {
+      "label": "Our Mission",
+      "title": "Creating experiences that bring people together.",
+      "content": "To deliver well-organized, engaging, and memorable events by combining creativity, professionalism, and seamless execution while building stronger communities through meaningful experiences."
+    },
+    "vision": {
+      "label": "Our Vision",
+      "cover": "b157906f-2eb7-4591-8706-eff836498730",
+      "title": "Building memorable events for every community.",
+      "content": "To become one of the most trusted and innovative event management brands, recognized for creating exceptional experiences that celebrate culture, inspire connections, and set new standards for event excellence."
+    },
+    "values": {
+      "title": "Our Values",
+      "label": "The principles that guide every event we organize.",
+      "values": [
+        {
+          "icon": "users",
+          "title": "Community First",
+          "content": "We create events that bring families, friends, businesses, and communities together through culture, entertainment, and meaningful interactions."
+        },
+        {
+          "icon": "sparkles",
+          "title": "Professional Planning",
+          "content": "From venue setup and vendor coordination to artist management and logistics, every event is planned with precision and executed professionally."
+        },
+        {
+          "icon": "heart",
+          "title": "Memorable Experiences",
+          "content": "Interactive activities, live performances, themed attractions, and creative event concepts ensure every guest leaves with lasting memories."
+        },
+        {
+          "icon": "calendar",
+          "title": "Well Organized",
+          "content": "Clear schedules, dedicated volunteers, seamless coordination, and attention to detail keep every event running smoothly from start to finish."
+        }
+      ]
+    },
+    "team": {
+      "title": "Meet out team",
+      "label": "Passionate people behind every successful event",
+      "cover": "96bf082d-8472-4168-a89f-c164d85e8af7",
+      "list": [
+        {
+          "title": "Maleena",
+          "label": "Founder",
+          "content": "Handles bringing sponsors for the events and managing chief guests.",
+          "cover": "f669e6e9-81e0-4a8c-a002-a0710c70f926"
+        },
+        {
+          "title": "Keerthi",
+          "label": "Guests Coordinator / Team Lead",
+          "content": "Handles overall execution of tasks in the team and inviting and managing guests.",
+          "cover": "b6a9233e-e671-4ebc-9d30-8316b211bff0"
+        },
+        {
+          "title": "Theressa",
+          "label": "Social Media Marketing",
+          "content": "Handles social media marketing and bringing volunteers for the event.",
+          "cover": "a595efd1-6f0f-4dde-87ee-c16cf18e3fab"
+        },
+        {
+          "title": "Laveena",
+          "label": "Vendor Management",
+          "content": "Handles bringing and coordinating vendors for the event.",
+          "cover": "9c0cb4be-b079-4602-b6c8-71a5e3ad9da5"
+        },
+        {
+          "title": "Ullas",
+          "label": "Accountant",
+          "content": "Handles payments and accounting for events.",
+          "cover": "3690ad49-ca35-4764-8a7b-8379515cd7f7"
+        },
+        {
+          "title": "Kevin",
+          "label": "Stage Designer",
+          "content": "Handles stall layouts, stage designs, and overall placement of things in the event.",
+          "cover": "4a4c8cec-7c1b-4665-ae0a-5c6eb6435f00"
+        },
+        {
+          "title": "Srikash",
+          "label": "Event Photographer",
+          "content": "Handles covering event photography and videography.",
+          "cover": "9c746d1a-5dce-47f4-a513-392292cf148c"
+        },
+        {
+          "title": "Abhijeet",
+          "label": "Developer / Designer",
+          "content": "Handles website creation, content creation, event video editing, and IT support.",
+          "cover": "35ae1881-58ca-440f-b447-4e7177f0df0a"
+        },
+        {
+          "title": "Suresh",
+          "label": "Cultural Events Coordinator",
+          "content": "Handles managing cultural teams, dances, and performances.",
+          "cover": "499656ef-cdcd-4f98-b959-ed4f6cf68e41"
+        }
+      ]
+    }
+  },
+  "hero": {
+    "title": "About MK Events",
+    "subtitle": "Creating unforgettable experiences.",
+    "cover": "3690ad49-ca35-4764-8a7b-8379515cd7f7",
+    "cta": {
+      "label": "Contact us",
+      "href": "/contact"
+    }
+  }
+}

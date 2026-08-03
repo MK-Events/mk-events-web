@@ -1,0 +1,102 @@
+@use 'styles/breakpoints' as *;
+
+.footer {
+  margin-top: 5rem;
+  padding-top: calc(var(--mantine-spacing-xl) * 2);
+  padding-bottom: calc(var(--mantine-spacing-xl) * 1);
+  color: var(--mantine-color-white);
+  background-color: var(--mantine-color-black);
+  border-top: 1px solid var(--mantine-color-primary-3);
+}
+
+.accent {
+  width: 17.5px;
+  height: 3px;
+  margin: 5px 0 15px 0;
+  background: var(--mantine-color-primary-6);
+}
+
+.logo {
+  max-width: 200px;
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.description {
+  margin-top: 5px;
+  color: var(--mantine-color-neutral-5);
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    margin-top: var(--mantine-spacing-xs);
+    text-align: center;
+  }
+}
+
+.inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.groups {
+  display: flex;
+  flex-wrap: wrap;
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    display: none;
+  }
+}
+
+.wrapper {
+  width: 160px;
+}
+
+.link {
+  display: block;
+  color: var(--mantine-color-neutral-6);
+  font-size: var(--mantine-font-size-xs);
+  padding: 5px 0;
+  transition: color 150ms ease;
+  text-decoration: unset;
+
+  &:hover {
+    color: var(--mantine-color-primary-5);
+  }
+}
+
+.title {
+  font-size: var(--mantine-font-size-sm);
+  font-weight: 500;
+  font-family: Outfit, var(--mantine-font-family);
+  margin-bottom: calc(var(--mantine-spacing-xs) / 2);
+  color: var(--mantine-color-white);
+}
+
+.afterFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--mantine-spacing-xl);
+  padding-top: var(--mantine-spacing-xl);
+  padding-bottom: var(--mantine-spacing-xl);
+  border-top: 1px solid var(--mantine-color-neutral-2);
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    flex-direction: column;
+  }
+}
+
+.social {
+  @media (max-width: $mantine-breakpoint-sm) {
+    margin-top: var(--mantine-spacing-xs);
+  }
+}

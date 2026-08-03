@@ -1,0 +1,8 @@
+.accordionControl {
+  transition: background-color 150ms ease;
+  border-radius: var(--mantine-radius-md);
+
+  &:hover {
+    background-color: var(--mantine-primary-color-light-hover);
+  }
+}

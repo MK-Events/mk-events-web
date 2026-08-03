@@ -1,0 +1,17 @@
+.teamSection {
+  padding: 5rem 0;
+  background: var(--mantine-color-primary-1);
+}
+
+.memberCard {
+  height: 100%;
+  border: 1px solid var(--mantine-color-gray-2);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--mantine-shadow-md);
+  }
+}

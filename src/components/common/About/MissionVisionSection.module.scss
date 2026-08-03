@@ -1,0 +1,63 @@
+@use 'styles/breakpoints' as *;
+
+.missionSection {
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.backdrop {
+  padding: 7rem 0;
+  background: #29261e24;
+  backdrop-filter: blur(3px);
+}
+
+.missionWrapper {
+  background: var(--mantine-color-primary-0);
+  border-radius: 28px;
+  padding: 4rem;
+  box-shadow: var(--mantine-shadow-md);
+}
+
+.content {
+  height: 100%;
+  justify-content: center;
+}
+
+.icon {
+  background: var(--mantine-color-primary-1);
+  color: var(--mantine-color-primary-7);
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--mantine-color-primary-7);
+}
+
+.description {
+  line-height: 1.8;
+  color: var(--mantine-color-dimmed);
+}
+
+.rightColumn {
+  position: relative;
+}
+
+.divider {
+  position: absolute;
+  left: -25px;
+  top: 0;
+  bottom: 0;
+}
+
+@media (max-width: $mantine-breakpoint-sm) {
+  .missionWrapper {
+    padding: 2rem;
+  }
+
+  .divider {
+    display: none;
+  }
+}

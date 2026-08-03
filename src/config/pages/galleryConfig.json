@@ -1,0 +1,11 @@
+{
+  "hero": {
+    "title": "Event Gallery",
+    "subtitle": "Every picture tells the story of unforgettable celebrations, vibrant performances, and cherished moments.",
+    "cover": "499656ef-cdcd-4f98-b959-ed4f6cf68e41",
+    "cta": {
+      "label": "Explore Events",
+      "href": "/events"
+    }
+  }
+}

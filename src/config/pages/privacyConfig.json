@@ -1,0 +1,30 @@
+{
+  "title": "Privacy Policy",
+  "lastUpdated": "22 July 2026",
+  "sections": [
+    {
+      "title": "Information We Collect",
+      "content": "We collect information that you voluntarily provide while registering for our events, including your name, email address, phone number, and payment information."
+    },
+    {
+      "title": "How We Use Your Information",
+      "content": "Your information is used to manage registrations, process payments, communicate event updates, verify tickets, and improve our services."
+    },
+    {
+      "title": "Payment Information",
+      "content": "Payments are securely processed through Razorpay. We do not store your complete debit or credit card details on our servers."
+    },
+    {
+      "title": "Data Sharing",
+      "content": "We do not sell your personal information. Information may only be shared with trusted service providers necessary for payment processing, ticketing, and legal compliance."
+    },
+    {
+      "title": "Data Security",
+      "content": "We implement reasonable administrative and technical measures to safeguard your personal information against unauthorized access."
+    },
+    {
+      "title": "Contact",
+      "content": "For privacy-related concerns, please contact us at {{supportEmail}}."
+    }
+  ]
+}

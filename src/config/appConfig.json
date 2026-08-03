@@ -1,0 +1,150 @@
+{
+  "global": {
+    "theme": "dark",
+    "supportEmail": "maleenakeerthi@gmail.com",
+    "supportContact": "+91-8825705220",
+    "website": "https://maleenakeerthi.com",
+    "logo": {
+      "logoFullDark": "https://res.cloudinary.com/fvbsb1po/image/upload/v1785654260/logo_dark_hokgpm.svg",
+      "logoFullLight": "https://res.cloudinary.com/fvbsb1po/image/upload/v1785654260/logo_light_n5bqro.svg",
+      "logoIconDark": "https://res.cloudinary.com/fvbsb1po/image/upload/v1785654259/logo_short_dark_fggu1c.svg",
+      "logoIconLight": "https://res.cloudinary.com/fvbsb1po/image/upload/v1785654258/logo_short_light_pijkay.svg"
+    },
+    "logoSize": {
+      "xl": 180,
+      "lg": 128,
+      "md": "72",
+      "sm": 48
+    }
+  },
+  "event": {
+    "attendeeLabels": {
+      "Adult": "Adult",
+      "College": "College Student",
+      "School": "School Student",
+      "Child": "Children",
+      "Guest": "Guest"
+    }
+  },
+  "misc": {
+    "socialIconStrokeWidth": 1.2,
+    "icons": [
+      "registration",
+      "food",
+      "ceremony",
+      "culture",
+      "music",
+      "games",
+      "kids",
+      "passport",
+      "competition",
+      "shopping",
+      "photo",
+      "celebrity",
+      "dj",
+      "finish"
+    ]
+  },
+  "legal": {
+    "copyright": "© 2026 Maleenakeerthi.com | All rights reserved."
+  },
+  "social": {
+    "links": [
+      {
+        "platform": "facebook",
+        "url": "https://www.facebook.com/profile.php?id=61592057306125"
+      },
+      {
+        "platform": "instagram",
+        "url": "https://www.instagram.com/mk_events_23"
+      },
+      {
+        "platform": "gmail",
+        "url": "mailto:https://maleenakeerthi.com"
+      },
+      {
+        "platform": "whatsapp",
+        "url": "https://wa.me/918825705220"
+      },
+      {
+        "platform": "github",
+        "url": "https://github.com/MK-Events"
+      }
+    ]
+  },
+  "navbar": {
+    "drawerlabel": "Menu",
+    "links": [
+      {
+        "link": "/",
+        "label": "Home"
+      },
+      {
+        "link": "/events",
+        "label": "Events"
+      },
+      {
+        "link": "/gallery",
+        "label": "Gallery"
+      },
+      {
+        "link": "/about",
+        "label": "About"
+      },
+      {
+        "link": "/contact",
+        "label": "Contact"
+      },
+      {
+        "link": "/download-ticket",
+        "label": "Download Ticket"
+      },
+      {
+        "link": "/register",
+        "label": "Register"
+      }
+    ]
+  },
+  "footer": {
+    "links": [
+      {
+        "title": "Quick Links",
+        "links": [
+          {
+            "label": "Home",
+            "link": "/"
+          },
+          {
+            "label": "About",
+            "link": "/about"
+          },
+          {
+            "label": "Gallery",
+            "link": "/gallery"
+          },
+          {
+            "label": "Contact",
+            "link": "/contact"
+          }
+        ]
+      },
+      {
+        "title": "Legal",
+        "links": [
+          {
+            "label": "Terms",
+            "link": "/terms"
+          },
+          {
+            "label": "Privacy Policy",
+            "link": "/privacy-policy"
+          },
+          {
+            "label": "Refund Policy",
+            "link": "/refund-policy"
+          }
+        ]
+      }
+    ]
+  }
+}

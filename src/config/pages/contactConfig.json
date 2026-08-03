@@ -1,0 +1,23 @@
+{
+  "hero": {
+    "title": "Contact Us"
+  },
+  "sections": {
+    "contact": {
+      "title": "Mk Events",
+      "phoneLabel": "Phone",
+      "emailLabel": "Email"
+    },
+    "businessHours": {
+      "title": "Business Hours",
+      "schedule": "Monday to Saturday",
+      "timing": "9:00 AM to 6:00 PM IST"
+    },
+    "responseTime": {
+      "title": "Response Time",
+      "content": "We generally respond to all enquiries within one business day."
+    }
+  },
+
+  "lastUpdatedate": "2 August 2026"
+}

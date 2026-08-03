@@ -1,0 +1,18 @@
+hero {
+  background: var(--mantine-color-primary-0);
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+}
+
+.backdrop {
+  backdrop-filter: blur(2px);
+  padding: 3rem 0;
+}
+
+.title,
+.subtitle {
+  color: var(--mantine-color-white);
+  text-shadow: 2px 1px 10px rgb(63, 63, 63);
+  text-align: center;
+}

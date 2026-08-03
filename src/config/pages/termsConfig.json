@@ -1,0 +1,30 @@
+{
+  "title": "Terms & Conditions",
+  "lastUpdated": "22 July 2026",
+  "sections": [
+    {
+      "title": "Acceptance",
+      "content": "By purchasing a ticket or registering for an event hosted by MK Events, you agree to these Terms & Conditions."
+    },
+    {
+      "title": "Event Entry",
+      "content": "A valid ticket and government-approved identification may be required for entry. Tickets are non-transferable unless explicitly permitted by the organizer."
+    },
+    {
+      "title": "Code of Conduct",
+      "content": "Participants are expected to behave respectfully. Any disruptive, abusive, or unlawful behavior may result in removal from the event without refund."
+    },
+    {
+      "title": "Event Changes",
+      "content": "MK Events reserves the right to modify schedules, venues, speakers, or activities when necessary."
+    },
+    {
+      "title": "Intellectual Property",
+      "content": "Event branding, logos, photographs, videos, and other materials remain the property of MK Events unless otherwise stated."
+    },
+    {
+      "title": "Limitation of Liability",
+      "content": "MK Events shall not be liable for indirect losses arising from event cancellation, postponement, or circumstances beyond our reasonable control."
+    }
+  ]
+}

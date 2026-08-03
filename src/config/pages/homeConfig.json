@@ -1,0 +1,56 @@
+{
+  "hero": {
+    "title": "Celebrate Together",
+    "subtitle": "Creating unforgettable community experiences",
+    "cover": "f99759a0-f7ab-491e-8907-7192f3f54dcf",
+    "cta": {
+      "label": "Explore Events",
+      "href": "/events"
+    }
+  },
+  "sections": {
+    "about": {
+      "title": "Who we are !",
+      "content": "MK Events creates unforgettable cultural, corporate, and community events through creative concepts, professional planning, and seamless execution. We believe every celebration should bring people together and leave lasting memories.",
+
+      "plainList": [
+        "Community-focused experiences",
+        "Professional event planning",
+        "Creative entertainment & activities",
+        "Seamless event execution"
+      ],
+      "cta": {
+        "label": "Know More",
+        "href": "/about"
+      }
+    },
+    "testimonials": {
+      "title": "What our customers say about us",
+      "list": [
+        {
+          "title": "Abhijeet",
+          "cover": "35ae1881-58ca-440f-b447-4e7177f0df0a",
+          "content": "MK Events organized everything flawlessly. From registration to the stage programs, every detail was handled professionally. It was one of the best community events I've attended."
+        },
+        {
+          "title": "Keerthi",
+          "cover": "b6a9233e-e671-4ebc-9d30-8316b211bff0",
+          "content": "The team's creativity and coordination made the event truly memorable. The activities, cultural performances, and overall atmosphere kept everyone engaged throughout the day."
+        },
+        {
+          "title": "Theressa",
+          "cover": "a595efd1-6f0f-4dde-87ee-c16cf18e3fab",
+          "content": "Working with MK Events was a wonderful experience. They were responsive, organized, and delivered exactly what they promised. Looking forward to attending more of their events."
+        }
+      ]
+    },
+    "gallery": {
+      "title": "Moments we've created",
+      "cover": "19e48816-657c-48a0-b61c-106f3b72c680",
+      "cta": {
+        "href": "/gallery",
+        "label": "View More"
+      }
+    }
+  }
+}

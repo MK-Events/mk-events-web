@@ -1,0 +1,21 @@
+{
+  "hero": {
+    "title": "Explore Events",
+    "subtitle": "Browse upcoming events, discover new experiences, and join celebrations happening near you.",
+    "cover": "daad1a4d-6a3d-41f9-af15-028d4ea411c1"
+  },
+  "sections": {
+    "upcomingEvents": {
+      "title": "Upcoming Events",
+      "caption": "Don't miss our highlighted celebration"
+    },
+    "featuredEvents": {
+      "title": "Featured Event",
+      "caption": "Don't miss our highlighted celebration"
+    },
+    "pastEvents": {
+      "title": "Past Event",
+      "caption": "Take a look at some of our previous celebrations"
+    }
+  }
+}

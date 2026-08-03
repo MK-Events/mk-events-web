@@ -1,0 +1,50 @@
+@use 'styles/breakpoints' as *;
+
+.header {
+  height: 56px;
+  background-color: var(--mantine-color-primary-0);
+  border-bottom: 1px solid var(--mantine-color-primary-2);
+
+  // Optional if you make it sticky later
+  // backdrop-filter: blur(8px);
+}
+
+.navbarLogo {
+  display: flex;
+}
+
+.inner {
+  height: 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.link {
+  display: block;
+  line-height: 1;
+  padding: 8px 12px;
+  border-radius: var(--mantine-radius-sm);
+  text-decoration: none;
+  color: var(--mantine-color-neutral-7);
+  font-size: var(--mantine-font-size-sm);
+  font-weight: 500;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease;
+
+  @media (max-width: $mantine-breakpoint-xs) {
+    border-radius: 0;
+    padding: var(--mantine-spacing-md);
+  }
+
+  @mixin hover {
+    background-color: var(--mantine-color-primary-1);
+    color: var(--mantine-color-primary-7);
+  }
+
+  &[data-active] {
+    background-color: var(--mantine-color-primary-5);
+    color: var(--mantine-color-white);
+  }
+}

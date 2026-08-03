@@ -1,0 +1,15 @@
+.storySection {
+  padding: 5rem 0;
+}
+
+.storyImage {
+  width: 100%;
+  display: block;
+  border-radius: var(--mantine-radius-lg);
+  object-fit: cover;
+}
+
+.story {
+  line-height: 1.8;
+  color: var(--mantine-color-dimmed);
+}

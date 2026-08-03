@@ -1,0 +1,57 @@
+@use 'styles/breakpoints' as *;
+
+.wrapper {
+  overflow: hidden;
+  background: var(--mantine-color-body);
+}
+
+.grid {
+  min-height: 520px;
+}
+
+.imageWrapper {
+  height: 100%;
+}
+
+.image {
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 400ms ease;
+}
+
+.wrapper:hover .image {
+  transform: scale(1.04);
+}
+
+.content {
+  height: 100%;
+  padding: clamp(2rem, 4vw, 3rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.bottom {
+  margin-top: auto;
+  padding-top: 2rem;
+  gap: 2rem;
+}
+
+@media (max-width: $mantine-breakpoint-md) {
+  .grid {
+    min-height: unset;
+  }
+
+  .imageWrapper {
+    aspect-ratio: 16 / 9;
+  }
+
+  .content {
+    padding: 1rem;
+  }
+
+  .bottom {
+    margin-top: unset;
+    padding-top: 1rem;
+  }
+}
