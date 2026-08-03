@@ -1,4 +1,4 @@
-import type { AppIconName } from '@mk/icons';
+import type { AppIconName } from '@mk/utils';
 
 import type { Asset, GalleryImage } from './Gallery.type';
 import type { Hero } from './Hero.type';

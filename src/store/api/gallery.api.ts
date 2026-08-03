@@ -46,7 +46,7 @@ export const galleryApi = baseApi.injectEndpoints({
         },
       }),
 
-      providesTags: (result, error, { galleryId }) => [
+      providesTags: (__, _, { galleryId }) => [
         { type: 'Gallery', id: galleryId },
         { type: 'GalleryAssets', id: galleryId },
       ],
