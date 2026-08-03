@@ -5,5 +5,6 @@ export * from './Hero';
 export * from './Legal';
 export * from './Logo';
 export * from './Navbar';
+export * from './PWAInstallButton';
 export * from './SocialLinks';
 export * from './States';
