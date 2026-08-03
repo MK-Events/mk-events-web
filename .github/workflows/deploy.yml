@@ -33,7 +33,7 @@ jobs:
 
       - name: Build
         env:
-          VITE_API_URL: https://api.maleenakeerthi.com
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}
         run: npm run build
 
       - name: Upload artifact

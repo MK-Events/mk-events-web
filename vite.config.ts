@@ -10,17 +10,51 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
+      injectRegister: 'auto',
+      devOptions: {
+        enabled: false,
+      },
+      includeAssets: [
+        'favicon-16x16.png',
+        'favicon-32x32.png',
+        'favicon-64x64.png',
+        'apple-touch-icon.png',
+      ],
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
+      },
       manifest: {
-        name: 'MK Events',
-        short_name: 'MKEvents',
+        id: '/',
+        name: 'Maleena Keerthi Events',
+        short_name: 'MK Events',
+
+        description: 'Discover unforgettable events and create lasting memories.',
+
         start_url: '/',
+        scope: '/',
+
         display: 'standalone',
-        background_color: '#ffffff',
+
+        theme_color: '#bd841d',
+        background_color: '#29261E',
+        orientation: 'portrait',
+
         icons: [
           {
-            src: '/favicon-192.png',
+            src: 'pwa-192x192.png',
             sizes: '192x192',
             type: 'image/png',
+          },
+          {
+            src: 'pwa-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+          },
+          {
+            src: 'pwa-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable',
           },
         ],
       },

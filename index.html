@@ -2,12 +2,47 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Favicon icons -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64x64.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- PWA meta tags -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="MK Events" />
+
+    <!-- Mobile device screen size scaling -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mk-events-web</title>
+
+    <!-- Theme color (mobile chrome) -->
+    <meta name="theme-color" content="#bd841d" />
+
+    <!-- SEO -->
+    <title>MK Events</title>
+    <meta name="description" content="Discover unforgettable events and create lasting memories." />
+    <meta property="og:title" content="MK Events" />
+    <meta property="og:description" content="Discover and experience unforgettable events." />
+    <meta property="og:image" content="https://maleenakeerthi.com/apple-touch-icon.png" />
+    <meta property="og:url" content="https://maleenakeerthi.com" />
+    <meta property="og:type" content="website" />
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PC4F0K0BGD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'G-PC4F0K0BGD');
+    </script>
   </body>
 </html>
