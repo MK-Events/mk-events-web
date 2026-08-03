@@ -17,7 +17,7 @@ export function Navbar() {
       key={link.label}
       className={styles.link}
       data-active={location.pathname === link.link || undefined}
-      onClick={() => close}
+      onClick={() => close()}
     >
       {link.label}
     </Link>
