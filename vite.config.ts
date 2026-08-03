@@ -23,41 +23,7 @@ export default defineConfig({
       workbox: {
         globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
       },
-      manifest: {
-        id: '/',
-        name: 'Maleena Keerthi Events',
-        short_name: 'MK Events',
-
-        description: 'Discover unforgettable events and create lasting memories.',
-
-        start_url: '/',
-        scope: '/',
-
-        display: 'standalone',
-
-        theme_color: '#bd841d',
-        background_color: '#29261E',
-        orientation: 'portrait',
-
-        icons: [
-          {
-            src: 'pwa-192x192.png',
-            sizes: '192x192',
-            type: 'image/png',
-          },
-          {
-            src: 'pwa-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
-          },
-          {
-            src: 'pwa-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
-            purpose: 'maskable',
-          },
-        ],
-      },
+      manifest: false,
     }),
   ],
   css: {
