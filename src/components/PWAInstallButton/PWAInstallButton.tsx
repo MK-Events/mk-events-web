@@ -1,9 +1,11 @@
+import { useAppConfig } from '@mk/hooks';
 import { usePWAInstall } from '@mk/hooks/usePWAInstall';
 import { IconDownload, IconX } from '@tabler/icons-react';
 
 import styles from './PWAInstallButton.module.scss';
 
 export const PWAInstallButton = () => {
+  const config = useAppConfig();
   const { installable, installApp, isInstalled, dismissInstall } = usePWAInstall();
 
   if (!installable || isInstalled) {
@@ -15,7 +17,7 @@ export const PWAInstallButton = () => {
       <button onClick={installApp} className={styles.pwaButton} type="button">
         <div className={styles.pwaContent}>
           <IconDownload className={styles.pwaIcon} />
-          Install app
+          {config.pwa.installButtonLabel}
         </div>
       </button>
 

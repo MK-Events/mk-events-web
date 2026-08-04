@@ -76,6 +76,9 @@
       }
     ]
   },
+  "pwa": {
+    "installButtonLabel": "Install MK Events App"
+  },
   "navbar": {
     "drawerlabel": "Menu",
     "links": [
