@@ -27,7 +27,10 @@
   font-weight: 700;
   font-size: 0.95rem;
   cursor: pointer;
-  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease;
 }
 
 .pwaButton:hover,
@@ -59,7 +62,10 @@
   background: var(--mantine-color-white);
   color: var(--mantine-color-primary-8);
   cursor: pointer;
-  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease;
 }
 
 .pwaClose:hover,
@@ -79,7 +85,7 @@
   }
 
   .pwaButton {
-    flex: 1 1 100%;
+    flex: 1 1 50%;
   }
 
   .pwaClose {

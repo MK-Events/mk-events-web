@@ -13,16 +13,25 @@ import {
   IconBrandGmail as Gmail,
   IconBrandInstagram as Instagram,
   IconBrandWhatsapp as Whatsapp,
+  IconBrandYoutube as Youtube,
 } from '@tabler/icons-react';
 
 import styles from './SocialLinks.module.scss';
+
+const socialIconMap = {
+  facebook: Facebook,
+  instagram: Instagram,
+  whatsapp: Whatsapp,
+  github: Github,
+  gmail: Gmail,
+  youtube: Youtube,
+} as const;
 
 export interface SocialLinksProps {
   layout?: SocialLinksLayout;
   size?: SocialLinksSize;
   className?: string;
   style?: React.CSSProperties;
-  iconClassName?: string;
   iconTheme?: 'light' | 'dark';
 }
 
@@ -36,51 +45,31 @@ export const SocialLinks = ({
   const config = useAppConfig();
   const strokeWidth = config.misc.socialIconStrokeWidth;
   const iconSize = iconSizeMap[size || defaultSocialLinksSize];
-  const iconColor = iconTheme === 'dark' ? '#FFFFFF' : '#000000';
-  const socialIcons = config.social.links.map((socialPlatform) => {
-    return (
-      <a
-        href={socialPlatform.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={styles.socialIcon}
-        key={socialPlatform.platform}
-      >
-        {socialPlatform.platform === 'facebook' && (
-          <Tooltip label={capitalizeFirstLetter(socialPlatform.platform)}>
-            <Facebook strokeWidth={strokeWidth} size={iconSize} color={iconColor} />
-          </Tooltip>
-        )}
-        {socialPlatform.platform === 'instagram' && (
-          <Tooltip label={capitalizeFirstLetter(socialPlatform.platform)}>
-            <Instagram strokeWidth={strokeWidth} size={iconSize} color={iconColor} />
-          </Tooltip>
-        )}
-        {socialPlatform.platform === 'whatsapp' && (
-          <Tooltip label={capitalizeFirstLetter(socialPlatform.platform)}>
-            <Whatsapp strokeWidth={strokeWidth} size={iconSize} color={iconColor} />
-          </Tooltip>
-        )}
-        {socialPlatform.platform === 'github' && (
-          <Tooltip label={capitalizeFirstLetter(socialPlatform.platform)}>
-            <Github strokeWidth={strokeWidth} size={iconSize} color={iconColor} />
-          </Tooltip>
-        )}
-        {socialPlatform.platform === 'gmail' && (
-          <Tooltip label={capitalizeFirstLetter(socialPlatform.platform)}>
-            <Gmail strokeWidth={strokeWidth} size={iconSize} color={iconColor} />
-          </Tooltip>
-        )}
-      </a>
-    );
-  });
+  const iconColor = iconTheme === 'dark' ? '#fff' : '#000';
 
   return (
     <div
       className={`social-links ${layout === 'vertical' ? 'flex-col' : 'flex-row'} ${className}`}
       style={style}
     >
-      {socialIcons}
+      {config.social.links.map(({ platform, url }) => {
+        const Icon = socialIconMap[platform as keyof typeof socialIconMap];
+        if (!Icon) return null;
+
+        return (
+          <a
+            key={platform}
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.socialIcon}
+          >
+            <Tooltip label={capitalizeFirstLetter(platform)}>
+              <Icon strokeWidth={strokeWidth} size={iconSize} color={iconColor} />
+            </Tooltip>
+          </a>
+        );
+      })}
     </div>
   );
 };

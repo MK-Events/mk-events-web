@@ -11,4 +11,5 @@ interface SectionBase {
 export interface Section extends SectionBase, Pick<Hero, 'cta'> {
   list?: SectionBase[];
   plainList?: string[];
+  visible?: boolean;
 }

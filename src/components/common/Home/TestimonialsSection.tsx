@@ -12,7 +12,7 @@ interface TestimonialsSectionProps {
 }
 
 export function TestimonialsSection({ testimonials }: TestimonialsSectionProps) {
-  if (!testimonials.list?.length) return null;
+  if (!testimonials.list?.length || !testimonials.visible) return null;
   const { data, isLoading, isFetching } = useGetAssetsByIdsQuery(
     testimonials.list?.map((e) => (e.cover ? e.cover : '')) ?? []
   );
