@@ -6,9 +6,9 @@ import styles from './PWAInstallButton.module.scss';
 export const PWAInstallButton = () => {
   const { installable, installApp, isInstalled, dismissInstall } = usePWAInstall();
 
-  //   if (!installable || isInstalled) {
-  //     return null;
-  //   }
+  if (!installable || isInstalled) {
+    return null;
+  }
 
   return (
     <div className={styles.pwaWrapper} role="dialog" aria-live="polite">
