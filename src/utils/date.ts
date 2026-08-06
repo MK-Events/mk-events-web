@@ -90,6 +90,5 @@ export function formatEventScheduleTime(time: string) {
     hour: 'numeric',
     minute: '2-digit',
     hour12: true,
-    timeZone: 'UTC', // Keep it in UTC
   });
 }
