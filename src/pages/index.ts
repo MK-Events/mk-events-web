@@ -1,5 +1,4 @@
 export * from './About';
-export * from './DownloadTicket';
 export * from './EventDetails';
 export * from './Events';
 export * from './Gallery';
@@ -10,3 +9,4 @@ export * from './Legal/RefundPolicy';
 export * from './Legal/Terms';
 export * from './NotFound';
 export * from './Register';
+export * from './Tickets';

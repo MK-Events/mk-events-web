@@ -1,0 +1,23 @@
+.container {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 32px 20px 48px;
+}
+
+.loadingCard {
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.backButton {
+  align-self: flex-start;
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding: 24px 16px 40px;
+  }
+}

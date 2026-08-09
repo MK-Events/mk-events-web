@@ -1,3 +1,4 @@
+export * from './Bookings';
 export * from './common';
 export * from './Faq';
 export * from './Footer';

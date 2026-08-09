@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Razorpay Test</title>
+  </head>
+
+  <body>
+    <button id="pay">Pay ₹3897</button>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <script>
+      document.getElementById('pay').onclick = function () {
+        const options = {
+          key: 'rzp_test_TMaR24el3suIPx',
+
+          amount: 389700,
+
+          currency: 'INR',
+
+          order_id: 'order_TNhwbG86x2IwIq',
+
+          name: 'MK Events',
+
+          description: 'Onam Blast 2026',
+
+          prefill: {
+            name: 'Test User',
+            email: 'test@test.com',
+            contact: '9999999999',
+          },
+
+          handler: async function (response) {
+            console.log(response);
+
+            const verify = await fetch(
+              'http://localhost:3000/payments/verify/e883262e-3a35-4e08-ad9c-a75329e8e85a',
+              {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  razorpayOrderId: response.razorpay_order_id,
+                  razorpayPaymentId: response.razorpay_payment_id,
+                  razorpaySignature: response.razorpay_signature,
+                }),
+              }
+            );
+
+            console.log(await verify.json());
+          },
+        };
+
+        new Razorpay(options).open();
+      };
+    </script>
+  </body>
+</html>

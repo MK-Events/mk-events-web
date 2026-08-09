@@ -10,6 +10,12 @@
       "logoIconDark": "https://res.cloudinary.com/fvbsb1po/image/upload/v1785654259/logo_short_dark_fggu1c.svg",
       "logoIconLight": "https://res.cloudinary.com/fvbsb1po/image/upload/v1785654258/logo_short_light_pijkay.svg"
     },
+    "logoPng": {
+      "logoFullDark": "https://res.cloudinary.com/fvbsb1po/image/upload/v1786302088/logo_dark_tbthfi.png",
+      "logoFullLight": "https://res.cloudinary.com/fvbsb1po/image/upload/v1786302088/logo_light_jfpr8o.png",
+      "logoIconDark": "https://res.cloudinary.com/fvbsb1po/image/upload/v1786302087/logo_short_dark_ey03ez.png",
+      "logoIconLight": "https://res.cloudinary.com/fvbsb1po/image/upload/v1786302087/logo_short_light_gtvll9.png"
+    },
     "logoSize": {
       "xl": 180,
       "lg": 128,
@@ -103,12 +109,12 @@
         "label": "Contact"
       },
       {
-        "link": "/download-ticket",
-        "label": "Download Ticket"
-      },
-      {
         "link": "/register",
         "label": "Register"
+      },
+      {
+        "link": "/tickets",
+        "label": "Tickets"
       }
     ]
   },

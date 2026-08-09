@@ -1,4 +1,5 @@
 export * from './About.type';
+export * from './Booking.type';
 export * from './Event.type';
 export * from './Gallery.type';
 export * from './Hero.type';
@@ -9,4 +10,5 @@ export * from './Section.type';
 export * from './SocialLinks.type';
 export * from './TeamMember.type';
 export * from './Testimonials.type';
+export * from './ticket.type';
 export * from './Tickets.type';

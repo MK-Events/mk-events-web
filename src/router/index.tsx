@@ -1,7 +1,6 @@
 import {
   About,
   Contact,
-  DownloadTicket,
   EventDetails,
   Events,
   Gallery,
@@ -11,6 +10,7 @@ import {
   RefundPolicy,
   Register,
   Terms,
+  Tickets,
 } from '@mk/pages';
 import { createBrowserRouter } from 'react-router-dom';
 
@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
       { path: '/contact', element: <Contact /> },
       { path: '/register', element: <Register /> },
       { path: '/register/:slug', element: <Register /> },
-      { path: '/download-ticket', element: <DownloadTicket /> },
+      { path: '/tickets', element: <Tickets /> },
       { path: '/privacy-policy', element: <PrivacyPolicy /> },
       { path: '/refund-policy', element: <RefundPolicy /> },
       { path: '/terms', element: <Terms /> },
