@@ -23,6 +23,7 @@ export default defineConfig({
       ],
       workbox: {
         globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
         globIgnores: ['**/EventTicketDownload-*.js', '**/*pdf*.js', '**/stats.html'],
       },
       manifest: false,
