@@ -2,7 +2,7 @@ import type { EventTicketData } from '@mk/types';
 import { getAttendeeTypeLabel, getBookingAttendees, getBookingTickets } from '@mk/utils';
 import { Document, Image, Page, Text, View } from '@react-pdf/renderer';
 
-import { eventTicketStyles } from './EventTicketDownload.styles';
+import { eventTicketStyles } from './EventTicketDocument.styles';
 
 interface EventTicketDocumentProps {
   data: EventTicketData;

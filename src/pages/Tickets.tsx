@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 
 import {
   Alert,
@@ -14,7 +14,7 @@ import {
   TextInput,
   Title,
 } from '@mantine/core';
-import { BookingCard, EventQrCode, EventTicketDownload } from '@mk/components';
+import { BookingCard, EventQrCode } from '@mk/components';
 import { useAppConfig } from '@mk/hooks';
 import { useFindBookingsMutation, useGetBookingQrMutation } from '@mk/store/api/booking.api';
 import { useGetEventQuery, useGetEventsQuery } from '@mk/store/api/events.api';
@@ -30,6 +30,8 @@ import { IconAlertCircle, IconArrowLeft, IconTicket } from '@tabler/icons-react'
 import classes from './Tickets.module.scss';
 
 type Step = 'event' | 'lookup' | 'bookings' | 'qr';
+
+const EventTicketDownload = lazy(() => import('@mk/components/Bookings/EventTicketDownload'));
 
 export function Tickets() {
   const config = useAppConfig();
@@ -516,7 +518,15 @@ export function Tickets() {
 
             {/* PDF DOWNLOAD */}
 
-            <EventTicketDownload data={ticketData} />
+            <Suspense
+              fallback={
+                <Button fullWidth loading>
+                  Preparing download...
+                </Button>
+              }
+            >
+              <EventTicketDownload data={ticketData} />
+            </Suspense>
           </Stack>
         </Paper>
 

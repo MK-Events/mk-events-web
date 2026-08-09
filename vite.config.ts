@@ -1,4 +1,5 @@
 import react from '@vitejs/plugin-react';
+import { visualizer } from 'rollup-plugin-visualizer';
 import { fileURLToPath } from 'url';
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
@@ -22,8 +23,15 @@ export default defineConfig({
       ],
       workbox: {
         globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
+        globIgnores: ['**/EventTicketDownload-*.js', '**/*pdf*.js', '**/stats.html'],
       },
       manifest: false,
+    }),
+    visualizer({
+      filename: './dist/stats.html',
+      open: true,
+      gzipSize: true,
+      brotliSize: true,
     }),
   ],
   css: {
