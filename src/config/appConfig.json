@@ -109,10 +109,6 @@
         "label": "Contact"
       },
       {
-        "link": "/register",
-        "label": "Register"
-      },
-      {
         "link": "/tickets",
         "label": "Tickets"
       }
