@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 
 import {
   Alert,
@@ -15,9 +15,10 @@ import {
   Title,
 } from '@mantine/core';
 import { BookingCard, EventQrCode } from '@mk/components';
-import { useAppConfig } from '@mk/hooks';
+import { useAppConfig, useAppDispatch } from '@mk/hooks';
 import { useFindBookingsMutation, useGetBookingQrMutation } from '@mk/store/api/booking.api';
 import { useGetEventQuery, useGetEventsQuery } from '@mk/store/api/events.api';
+import { resetAll } from '@mk/store/slice/reservationSlice';
 import type { BookingPass, EventTicketData } from '@mk/types';
 import {
   formatEventScheduleTime,
@@ -35,7 +36,14 @@ const EventTicketDownload = lazy(() => import('@mk/components/Bookings/EventTick
 
 export function Tickets() {
   const config = useAppConfig();
+  const dispatch = useAppDispatch();
   const [step, setStep] = useState<Step>('event');
+
+  useEffect(() => {
+    return () => {
+      dispatch(resetAll());
+    };
+  }, [dispatch]);
 
   const [eventId, setEventId] = useState<string | null>(null);
 

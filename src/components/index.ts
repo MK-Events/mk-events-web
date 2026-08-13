@@ -7,5 +7,6 @@ export * from './Legal';
 export * from './Logo';
 export * from './Navbar';
 export * from './PWAInstallButton';
+export * from './Reservation';
 export * from './SocialLinks';
 export * from './States';

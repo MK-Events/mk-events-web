@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import { baseApi } from './api/base.api';
+import { reservationSlice } from './slice/reservationSlice';
 
 export const store = configureStore({
   reducer: {
+    [reservationSlice.name]: reservationSlice.reducer,
     [baseApi.reducerPath]: baseApi.reducer,
   },
 

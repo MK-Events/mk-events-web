@@ -8,6 +8,7 @@ import gallery from '@mk/config/pages/galleryConfig.json';
 import home from '@mk/config/pages/homeConfig.json';
 import privacy from '@mk/config/pages/privacyConfig.json';
 import refund from '@mk/config/pages/refundPolicy.json';
+import registration from '@mk/config/pages/registrationConfig.json';
 import terms from '@mk/config/pages/termsConfig.json';
 
 const pageConfigs = {
@@ -20,6 +21,7 @@ const pageConfigs = {
   terms,
   refund,
   about,
+  registration,
 } as const;
 
 export type PageSlug = keyof typeof pageConfigs;

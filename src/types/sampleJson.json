@@ -1,0 +1,181 @@
+{
+  "reservation": {
+    "id": "b76fa0c0-1862-4bee-9f64-2e8b60b5ba72",
+    "eventId": "7dbefd1b-29f7-4364-9960-893539d180c1",
+    "stage": "CONFIRMED",
+    "bookingId": "MKE2026-000006",
+    "confirmedAt": "2026-08-11T13:12:19.679Z",
+    "createdAt": "2026-08-11T11:28:54.741Z",
+    "updatedAt": "2026-08-11T13:12:20.334Z",
+    "deviceId": "72d755e1-8d72-44db-8eea-3710a6e87eda",
+    "canProceed": true,
+    "payment": {
+      "id": "673d7bb6-5c91-4185-a1ed-9c6a3aa889e9",
+      "reservationId": "b76fa0c0-1862-4bee-9f64-2e8b60b5ba72",
+      "provider": "RAZORPAY",
+      "paymentMethod": null,
+      "paidAt": "2026-08-11T13:12:19.614Z",
+      "orderId": "order_TORmlEVOYn5ZWW",
+      "paymentId": "pay_TOTUH6Z6gVUYfJ",
+      "signature": "461695776c464d4cbd44608594b111148f0bbd3d64a08509019bfb0cd6a2f8aa",
+      "receipt": "TEMP-b76fa0c0",
+      "amount": 2398,
+      "currency": "INR",
+      "status": "CAPTURED",
+      "rawResponse": {
+        "id": "order_TORmlEVOYn5ZWW",
+        "notes": [],
+        "amount": 239800,
+        "entity": "order",
+        "status": "created",
+        "receipt": "TEMP-b76fa0c0",
+        "attempts": 0,
+        "currency": "INR",
+        "offer_id": null,
+        "amount_due": 239800,
+        "created_at": 1786447925,
+        "amount_paid": 0
+      },
+      "createdAt": "2026-08-11T11:32:05.711Z",
+      "updatedAt": "2026-08-11T13:12:19.616Z"
+    },
+    "contact": {
+      "reservationId": "b76fa0c0-1862-4bee-9f64-2e8b60b5ba72",
+      "name": "Abhijeet Kumar",
+      "age": 28,
+      "gender": "Male",
+      "phone": "+919546003296",
+      "email": "abhijeetk82985@gmail.com",
+      "createdAt": "2026-08-11T11:28:59.003Z",
+      "updatedAt": "2026-08-11T11:28:59.003Z"
+    },
+    "tickets": [
+      {
+        "id": "40586f10-b4e1-484e-8ebb-fcf21453f15f",
+        "reservationId": "b76fa0c0-1862-4bee-9f64-2e8b60b5ba72",
+        "ticketId": "2ffabfed-5ba0-4678-8a98-4ca64cb40a20",
+        "quantity": 1,
+        "createdAt": "2026-08-11T11:29:13.232Z",
+        "updatedAt": "2026-08-11T11:29:13.232Z",
+        "ticket": {
+          "id": "2ffabfed-5ba0-4678-8a98-4ca64cb40a20",
+          "eventId": "7dbefd1b-29f7-4364-9960-893539d180c1",
+          "attendeeType": "Adult",
+          "currency": "INR",
+          "price": 1499,
+          "availableQuantity": 50,
+          "soldCount": 3,
+          "maxPerBooking": 5,
+          "maxChild": 2,
+          "requirements": null,
+          "type": "PAID",
+          "maxAge": null
+        },
+        "attendees": [
+          {
+            "id": "71ae84fe-5378-45e3-806a-db73a53d48d5",
+            "reservationId": "b76fa0c0-1862-4bee-9f64-2e8b60b5ba72",
+            "reservationTicketId": "40586f10-b4e1-484e-8ebb-fcf21453f15f",
+            "type": "Adult",
+            "name": "Abhijeet Kumar",
+            "age": 31,
+            "gender": "Male",
+            "checkedInAt": null,
+            "createdAt": "2026-08-11T11:31:43.794Z",
+            "updatedAt": "2026-08-11T11:31:43.794Z"
+          }
+        ]
+      },
+      {
+        "id": "660372f8-0c29-4660-ad04-22ce00a07942",
+        "reservationId": "b76fa0c0-1862-4bee-9f64-2e8b60b5ba72",
+        "ticketId": "4f4a309b-46c5-4123-a3ec-b43fd1f773b9",
+        "quantity": 1,
+        "createdAt": "2026-08-11T11:29:13.278Z",
+        "updatedAt": "2026-08-11T11:29:13.278Z",
+        "ticket": {
+          "id": "4f4a309b-46c5-4123-a3ec-b43fd1f773b9",
+          "eventId": "7dbefd1b-29f7-4364-9960-893539d180c1",
+          "attendeeType": "College",
+          "currency": "INR",
+          "price": 899,
+          "availableQuantity": 100,
+          "soldCount": 1,
+          "maxPerBooking": 10,
+          "maxChild": 1,
+          "requirements": "College students are required to carry their college ID for proof",
+          "type": "PAID",
+          "maxAge": null
+        },
+        "attendees": [
+          {
+            "id": "4288b8d8-601e-4242-bec7-4a661eae6002",
+            "reservationId": "b76fa0c0-1862-4bee-9f64-2e8b60b5ba72",
+            "reservationTicketId": "660372f8-0c29-4660-ad04-22ce00a07942",
+            "type": "College",
+            "name": "Keerthi Ranjeeth",
+            "age": 26,
+            "gender": "Female",
+            "checkedInAt": null,
+            "createdAt": "2026-08-11T11:31:43.794Z",
+            "updatedAt": "2026-08-11T11:31:43.794Z"
+          }
+        ]
+      }
+    ],
+    "attendees": [
+      {
+        "id": "71ae84fe-5378-45e3-806a-db73a53d48d5",
+        "reservationId": "b76fa0c0-1862-4bee-9f64-2e8b60b5ba72",
+        "reservationTicketId": "40586f10-b4e1-484e-8ebb-fcf21453f15f",
+        "type": "Adult",
+        "name": "Abhijeet Kumar",
+        "age": 31,
+        "gender": "Male",
+        "checkedInAt": null,
+        "createdAt": "2026-08-11T11:31:43.794Z",
+        "updatedAt": "2026-08-11T11:31:43.794Z"
+      },
+      {
+        "id": "4288b8d8-601e-4242-bec7-4a661eae6002",
+        "reservationId": "b76fa0c0-1862-4bee-9f64-2e8b60b5ba72",
+        "reservationTicketId": "660372f8-0c29-4660-ad04-22ce00a07942",
+        "type": "College",
+        "name": "Keerthi Ranjeeth",
+        "age": 26,
+        "gender": "Female",
+        "checkedInAt": null,
+        "createdAt": "2026-08-11T11:31:43.794Z",
+        "updatedAt": "2026-08-11T11:31:43.794Z"
+      }
+    ]
+  },
+  "summary": {
+    "stage": "CONFIRMED",
+    "ticketBreakdown": [
+      {
+        "reservationTicketId": "40586f10-b4e1-484e-8ebb-fcf21453f15f",
+        "ticketId": "2ffabfed-5ba0-4678-8a98-4ca64cb40a20",
+        "ticketName": "Adult",
+        "quantity": 1,
+        "unitPrice": 1499,
+        "amount": 1499
+      },
+      {
+        "reservationTicketId": "660372f8-0c29-4660-ad04-22ce00a07942",
+        "ticketId": "4f4a309b-46c5-4123-a3ec-b43fd1f773b9",
+        "ticketName": "College",
+        "quantity": 1,
+        "unitPrice": 899,
+        "amount": 899
+      }
+    ],
+    "subtotal": 2398,
+    "discount": 0,
+    "total": 2398,
+    "totalChildren": 0,
+    "freeChildrenAllowed": 3,
+    "paymentStatus": "CAPTURED",
+    "canProceed": true
+  }
+}

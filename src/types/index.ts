@@ -6,6 +6,7 @@ export * from './Hero.type';
 export * from './Homepage.type';
 export * from './Logo.type';
 export * from './Navbar.type';
+export * from './Reservation.type';
 export * from './Section.type';
 export * from './SocialLinks.type';
 export * from './TeamMember.type';

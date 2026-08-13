@@ -1,0 +1,150 @@
+{
+  "sections": {
+    "welcomeScreen": {
+      "title": "Event Registration",
+      "dateLabel": "Date",
+      "timeLabel": "Time",
+      "venueLabel": "Venue",
+      "beforeYouRegisterLabel": "Before you register",
+      "readyToRegisterLabel": "Ready to register?",
+      "continueUserDetailMessage": "Continue to provide your details and select your tickets.",
+      "beginRegistrationLabel": "Begin Registration"
+    },
+    "errorModal": {
+      "title": "Something went wrong",
+      "unknownErrorTitle": "UNKNOWN_ERROR",
+      "message": "Something went wrong while processing your reservation. Please try again.",
+      "statusCode": 500
+    },
+    "resumeProgress": {
+      "modalTitle": "Continue your registration?",
+      "stageLabels": {
+        "WELCOME": "Welcome",
+        "CONTACT": "Contact details",
+        "TICKETS": "Ticket selection",
+        "ATTENDEES": "Attendee details",
+        "REVIEW": "Review",
+        "PAYMENT_PENDING": "Payment",
+        "CONFIRMED": "Confirmed",
+        "PAYMENT_FAILED": "Payment",
+        "CANCELLED": "Cancelled"
+      },
+      "continueUserQuery": "You have an unfinished registration. Would you like to continue where you left off?",
+      "currentStepLabel": "Current step:"
+    },
+    "contactStep": {
+      "backLabel": "Back",
+      "title": "Contact Details",
+      "description": "Please provide your details to continue with the registration.",
+      "fullNameLabel": "Full name",
+      "fullNamePlaceholder": "Enter your full name",
+      "ageLabel": "Age",
+      "agePlaceholder": "Enter your age",
+      "genderLabel": "Gender",
+      "genderPlaceholder": "Select gender",
+      "genderOptions": [
+        { "value": "Male", "label": "Male" },
+        { "value": "Female", "label": "Female" },
+        { "value": "Others", "label": "Others" }
+      ],
+      "codeLabel": "Code",
+      "countryCodeOptions": [
+        { "value": "+91", "label": "+91" },
+        { "value": "+971", "label": "+971" },
+        { "value": "+1", "label": "+1" },
+        { "value": "+44", "label": "+44" }
+      ],
+      "phoneLabel": "Phone number",
+      "phonePlaceholder": "Enter your phone number",
+      "emailLabel": "Email address",
+      "emailPlaceholder": "Enter your email address",
+      "saveLabel": "Save Contact",
+      "continueLabel": "Save Contact & Continue",
+      "genderNotFoundMessage": "No gender found"
+    },
+    "ticketStep": {
+      "backLabel": "Back",
+      "title": "Select Tickets",
+      "description": "Choose the tickets you need for this event.",
+      "summaryLabel": "Selected tickets",
+      "saveLabel": "Save Tickets",
+      "continueLabel": "Save Tickets & Continue"
+    },
+    "attendeeStep": {
+      "backLabel": "Back",
+      "title": "Attendee Details",
+      "description": "Enter the details for each attendee.",
+      "personLabel": "person",
+      "peopleLabel": "people",
+      "attendeeLabel": "Attendee",
+      "fullNameLabel": "Full name",
+      "fullNamePlaceholder": "Enter name",
+      "ageLabel": "Age",
+      "agePlaceholder": "Enter age",
+      "genderLabel": "Gender",
+      "genderPlaceholder": "Select gender",
+      "genderOptions": [
+        { "value": "Male", "label": "Male" },
+        { "value": "Female", "label": "Female" },
+        { "value": "Others", "label": "Others" }
+      ],
+      "genderNotFoundMessage": "No gender found",
+      "saveLabel": "Save Attendees",
+      "continueLabel": "Save Attendees & Continue"
+    },
+    "reviewStep": {
+      "backLabel": "Back",
+      "title": "Review Your Registration",
+      "description": "Please check your details and ticket selection before making the payment.",
+      "contactSectionTitle": "Contact Details",
+      "selectedTicketsSectionTitle": "Selected Tickets",
+      "attendeesSectionTitle": "Attendees",
+      "subtotalLabel": "Subtotal",
+      "discountLabel": "Discount",
+      "totalLabel": "Total",
+      "makePaymentLabel": "Make Payment"
+    },
+    "paymentSuccess": {
+      "badge": "Payment Successful",
+      "title": "Booking Confirmed!",
+      "description": "Your registration and payment have been successfully completed. Your tickets are ready.",
+      "bookingIdLabel": "Booking ID",
+      "detailsTitle": "Booking Details",
+      "eventLabel": "Event",
+      "dateTimeLabel": "Date & Time",
+      "venueLabel": "Venue",
+      "confirmationLabel": "Confirmation sent to",
+      "qrReadyMessage": "QR token ready for ticket access.",
+      "viewTicketsLabel": "Go to Tickets & Download",
+      "bookAgainLabel": "Book Again",
+      "referenceMessage": "Keep your Booking ID handy for future reference."
+    },
+    "reservationCancelled": {
+      "title": "Reservation Cancelled",
+      "description": "Your reservation has been cancelled. No further payment will be processed for this reservation.",
+      "eventLabel": "Event",
+      "reservationIdLabel": "Reservation ID",
+      "cancelledOnLabel": "Cancelled on",
+      "startAgainLabel": "Start Registration Again",
+      "backToEventLabel": "Back to Event"
+    }
+  },
+  "common": {
+    "closeButtonLabel": "Close",
+    "retryButtonLabel": "Try Again",
+    "ticketsLabel": "Tickets",
+    "totalLabel": "Total",
+    "attendeeLabel": "Attendees",
+    "startFreshLabel": "Start fresh",
+    "continueLabel": "Continue",
+    "backLabel": "Back",
+    "saveLabel": "Save",
+    "saveAndContinueLabel": "Save & Continue"
+  },
+  "errorMessages": {
+    "newReservationError": {
+      "error": "Request Failed",
+      "message": "Unable to create reservation."
+    }
+  }
+}

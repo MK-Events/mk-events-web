@@ -15,8 +15,15 @@
   cursor: default;
 
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--mantine-shadow-lg);
+    transform: none;
+    box-shadow: none;
+  }
+
+  &.selectable {
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
   }
 
   &::before,
@@ -57,6 +64,17 @@
   &:hover {
     border-color: var(--mantine-primary-color-filled-hover);
     box-shadow: var(--mantine-shadow-xl);
+  }
+}
+
+.soldOut {
+  border-color: var(--mantine-color-red-4);
+  background: var(--mantine-color-red-light);
+  opacity: 0.8;
+
+  &:hover {
+    transform: none;
+    box-shadow: none;
   }
 }
 
@@ -118,6 +136,10 @@
 }
 
 @media (max-width: 48em) {
+  .ticket {
+    padding: 0.875rem 0.875rem 0.75rem;
+  }
+
   .ticket::before,
   .ticket::after {
     width: 18px;
@@ -133,6 +155,19 @@
   }
 
   .price {
-    font-size: 2.25rem;
+    font-size: 2.1rem;
+  }
+
+  .ticket :global(.mantine-Title-root) {
+    font-size: 1.35rem;
+  }
+
+  .ticket :global(.mantine-List-item) {
+    font-size: 0.8rem;
+  }
+
+  .ticket :global(.mantine-Button-root) {
+    min-height: 30px;
+    padding-inline: 0.5rem;
   }
 }

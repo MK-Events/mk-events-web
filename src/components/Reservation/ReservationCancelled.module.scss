@@ -1,0 +1,57 @@
+.wrapper {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+.card {
+  padding: 40px 36px;
+
+  @media (max-width: 600px) {
+    padding: 28px 20px;
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 72px;
+  height: 72px;
+
+  border-radius: 50%;
+
+  color: var(--mantine-color-red-7);
+  background: var(--mantine-color-red-0);
+}
+
+.detail {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 14px 16px;
+
+  border: 1px solid var(--mantine-color-default-border);
+
+  border-radius: var(--mantine-radius-lg);
+
+  color: var(--mantine-color-dimmed);
+}
+
+.bookingId {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+
+  padding: 16px;
+
+  border: 1px dashed var(--mantine-color-red-4);
+
+  border-radius: var(--mantine-radius-lg);
+
+  background: var(--mantine-color-red-0);
+}

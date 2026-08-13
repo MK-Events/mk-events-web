@@ -9,8 +9,10 @@ import { RouterProvider } from 'react-router-dom';
 import './App.css';
 import { router } from './router';
 import { store } from './store';
+import { getDeviceId } from './utils/deviceIdUtility';
 
 function App() {
+  getDeviceId();
   return (
     <Provider store={store}>
       <ColorSchemeScript />

@@ -1,0 +1,65 @@
+.wrapper {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.backButton {
+  margin: 1rem 0;
+}
+
+.card {
+  padding: 28px;
+  width: min(100%, 680px);
+  margin: 0 auto;
+
+  @media (max-width: 600px) {
+    padding: 20px;
+  }
+}
+
+.groupSection {
+  border: 1px solid #e9ecef;
+  background: #f8f9fa;
+  border-radius: 18px;
+  padding: 16px;
+}
+
+.groupHeader {
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: #e7f5ff;
+  color: #1c7ed6;
+}
+
+.attendee {
+  background: #fff;
+  padding: 16px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 8px;
+
+  @media (max-width: 480px) {
+    flex-direction: column-reverse;
+    align-items: stretch;
+
+    button {
+      width: 100%;
+    }
+  }
+}
