@@ -34,7 +34,8 @@ jobs:
       - name: Build
         env:
           VITE_API_URL: ${{ secrets.VITE_API_URL }}
-          DEVICE_ID_KEY: ${{ secrets.DEVICE_ID_KEY }}
+          VITE_DEVICE_ID_KEY: ${{ secrets.VITE_DEVICE_ID_KEY }}
+          VITE_API_KEY: ${{ secrets.VITE_API_KEY }}
         run: npm run build
 
       - name: Upload artifact

@@ -5,6 +5,15 @@ export const baseApi = createApi({
 
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_API_URL,
+    prepareHeaders: (headers) => {
+      const apiKey = import.meta.env.VITE_API_KEY;
+
+      if (apiKey) {
+        headers.set('x-api-key', apiKey);
+      }
+
+      return headers;
+    },
   }),
 
   tagTypes: ['Event', 'Gallery', 'Asset', 'GalleryAssets', 'Reservation', 'Payment'],

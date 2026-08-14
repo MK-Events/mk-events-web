@@ -6,7 +6,7 @@ export function generateDeviceId(): string {
 }
 
 export function getDeviceId(): string {
-  const existingId = localStorage.getItem(import.meta.env.VITE_API_URL);
+  const existingId = localStorage.getItem(import.meta.env.VITE_DEVICE_ID_KEY);
 
   if (existingId) {
     return existingId;
@@ -14,11 +14,11 @@ export function getDeviceId(): string {
 
   const deviceId = generateDeviceId();
 
-  localStorage.setItem(import.meta.env.VITE_API_URL, deviceId);
+  localStorage.setItem(import.meta.env.VITE_DEVICE_ID_KEY, deviceId);
 
   return deviceId;
 }
 
 export function clearDeviceId(): void {
-  localStorage.removeItem(import.meta.env.VITE_API_URL);
+  localStorage.removeItem(import.meta.env.VITE_DEVICE_ID_KEY);
 }
