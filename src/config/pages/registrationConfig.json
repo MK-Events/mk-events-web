@@ -164,9 +164,9 @@
       "title": "Register on District",
       "description": "Register on district to access this event. You will be redirected to the district registration page.",
       "registerButtonLabel": "Register on District",
-      "url": "https://www.district.in/events/onam-blast-2026-aug6-2026-buy-tickets?disableSSR=true",
+      "url": "https://www.district.in/events/onam-blast-2026-aug6-2026-buy-tickets",
       "color": "#9D00FF",
-      "enabled": false
+      "enabled": true
     },
     {
       "title": "Register on MK Events",
