@@ -174,7 +174,7 @@
       "registerButtonLabel": "Register on MK Events",
       "url": null,
       "color": null,
-      "enabled": false
+      "enabled": true
     }
   ]
 }
