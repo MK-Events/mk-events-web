@@ -2,6 +2,13 @@ import type { Event, EventList, FeaturedEvent } from '@mk/types';
 
 import { baseApi } from './base.api';
 
+interface EventRegistrationWindowResponse {
+  registration: {
+    opensAt: string;
+    closesAt: string;
+  };
+}
+
 export const eventsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getEvents: builder.query<EventList[], void>({
@@ -36,7 +43,23 @@ export const eventsApi = baseApi.injectEndpoints({
         },
       ],
     }),
+
+    getEventRegistrationWindow: builder.query<EventRegistrationWindowResponse, string>({
+      query: (slug) => `/events/${slug}?fields=registration.opensAt, registration.closesAt`,
+
+      providesTags: (_, __, slug) => [
+        {
+          type: 'Event',
+          id: `${slug}:registration-window`,
+        },
+      ],
+    }),
   }),
 });
 
-export const { useGetEventsQuery, useGetFeaturedEventsQuery, useGetEventQuery } = eventsApi;
+export const {
+  useGetEventsQuery,
+  useGetFeaturedEventsQuery,
+  useGetEventQuery,
+  useGetEventRegistrationWindowQuery,
+} = eventsApi;

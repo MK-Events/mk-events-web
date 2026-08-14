@@ -1,0 +1,40 @@
+.wrapper {
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+.card {
+  padding: 40px 32px;
+
+  @media (max-width: 600px) {
+    padding: 28px 20px;
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 68px;
+  height: 68px;
+
+  border-radius: 50%;
+
+  color: var(--mantine-color-orange-7);
+  background: var(--mantine-color-orange-0);
+}
+
+.opening {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 14px 18px;
+
+  border: 1px solid var(--mantine-color-default-border);
+
+  border-radius: var(--mantine-radius-lg);
+}

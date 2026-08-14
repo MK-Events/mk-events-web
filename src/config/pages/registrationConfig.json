@@ -127,6 +127,18 @@
       "cancelledOnLabel": "Cancelled on",
       "startAgainLabel": "Start Registration Again",
       "backToEventLabel": "Back to Event"
+    },
+    "registrationComingSoon": {
+      "badge": "Coming Soon",
+      "title": "Registrations Aren't Open Yet",
+      "description": "We're getting everything ready. Registration for this event will be open soon. Stay tuned!",
+      "opensLabel": "Registration opens",
+      "backToEventLabel": "Back to Event"
+    },
+    "registrationClosed": {
+      "badge": "Registration Closed",
+      "title": "Registrations Are Closed",
+      "description": "Registration for this event is currently closed. Thank you for your interest."
     }
   },
   "common": {
@@ -146,5 +158,23 @@
       "error": "Request Failed",
       "message": "Unable to create reservation."
     }
-  }
+  },
+  "registrationModes": [
+    {
+      "title": "Register on District",
+      "description": "Register on district to access this event. You will be redirected to the district registration page.",
+      "registerButtonLabel": "Register on District",
+      "url": "https://www.district.in/events/onam-blast-2026-aug6-2026-buy-tickets?disableSSR=true",
+      "color": "#9D00FF",
+      "enabled": false
+    },
+    {
+      "title": "Register on MK Events",
+      "description": "Register on MK Events to access this event. You will continue to register here.",
+      "registerButtonLabel": "Register on MK Events",
+      "url": null,
+      "color": null,
+      "enabled": false
+    }
+  ]
 }

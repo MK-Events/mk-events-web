@@ -72,6 +72,19 @@
   }
 }
 
+.modeActions {
+  flex-wrap: wrap;
+
+  @media (max-width: 600px) {
+    width: 100%;
+    justify-content: stretch;
+
+    :global(button) {
+      width: 100%;
+    }
+  }
+}
+
 .link {
   color: unset;
 }
