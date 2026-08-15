@@ -1,5 +1,6 @@
 import { Group, Progress, Stack, Text } from '@mantine/core';
 import type { EventComponentUsage } from '@mk/types';
+import {useAppConfig} from '@mk/hooks'
 
 interface EventRegistrationProgressProps {
   capacity: number;
@@ -12,6 +13,10 @@ export function EventRegistrationProgress({
   registered,
   usage,
 }: EventRegistrationProgressProps) {
+  const { showRegistrationProgress } = useAppConfig()
+  if (showRegistrationProgress) {
+    return null;
+  }
   const percentage = Math.min((registered / capacity) * 100, 100);
   const remaining = Math.max(capacity - registered, 0);
   const showFilledPercentage = usage !== 'EventDetails';
