@@ -155,5 +155,6 @@
         ]
       }
     ]
-  }
+  },
+  "showRegistrationProgress": false
 }
