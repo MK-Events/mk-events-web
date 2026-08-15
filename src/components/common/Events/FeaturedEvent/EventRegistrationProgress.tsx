@@ -14,7 +14,6 @@ export function EventRegistrationProgress({
   usage,
 }: EventRegistrationProgressProps) {
   const { showRegistrationProgress } = useAppConfig();
-  console.log(showRegistrationProgress, 'showRegistrationProgress');
   if (!showRegistrationProgress) {
     return null;
   }
