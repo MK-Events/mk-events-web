@@ -1,7 +1,14 @@
 import { Badge, Button, Card, Group, Image, Stack, Text, Title, Tooltip } from '@mantine/core';
 import { usePageConfig } from '@mk/hooks';
 import type { Event } from '@mk/types';
-import { IconCalendar, IconClock, IconMapPin, IconTicket } from '@tabler/icons-react';
+import {
+  IconArrowRight,
+  IconCalendar,
+  IconClock,
+  IconMapPin,
+  IconTicket,
+} from '@tabler/icons-react';
+import { Link } from 'react-router-dom';
 
 import styles from './RegistrationWelcome.module.scss';
 
@@ -27,14 +34,24 @@ export function RegistrationWelcome({ event, onBegin, loading = false }: Registr
 
         <Stack className={styles.content} gap="xl">
           <Stack gap="xs">
-            <Badge
-              leftSection={<IconTicket size={14} />}
-              variant="light"
-              size="lg"
-              className={styles.badge}
-            >
-              {welcomeScreen.title}
-            </Badge>
+            <Group gap="xs" justify={'space-between'}>
+              <Badge
+                leftSection={<IconTicket size={14} />}
+                variant="light"
+                size="lg"
+                className={styles.badge}
+              >
+                {welcomeScreen.title}
+              </Badge>
+              <Button
+                component={Link}
+                to={`/events/${event.slug}`}
+                variant="subtle"
+                rightSection={<IconArrowRight size={16} />}
+              >
+                {welcomeScreen.viewDetailsLabel}
+              </Button>
+            </Group>
 
             <Title order={1}>{event.name}</Title>
 
