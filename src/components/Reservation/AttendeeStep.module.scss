@@ -1,6 +1,6 @@
 .wrapper {
   width: 100%;
-  max-width: 700px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
@@ -9,9 +9,8 @@
 }
 
 .card {
-  padding: 28px;
-  width: min(100%, 680px);
-  margin: 0 auto;
+  padding: 32px;
+  margin: 0;
 
   @media (max-width: 600px) {
     padding: 20px;

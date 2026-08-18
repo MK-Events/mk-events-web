@@ -7,6 +7,7 @@ import {
   ErrorScreen,
   Loader,
   PaymentSuccess,
+  RegistrationStepIndicator,
   RegistrationWelcome,
   ReservationCancelled,
   ReservationErrorModal,
@@ -321,14 +322,35 @@ export function RegisterWrapper() {
         value={{
           stage: 'ATTENDEES',
           attendees:
-            reservationData.reservation.attendees?.map((attendee) => ({
-              reservationTicketId: attendee.reservationTicketId,
-              name: attendee.name,
-              age: attendee.age,
-              gender: attendee.gender,
-            })) ?? [],
+            reservationData.reservation.attendees?.map((attendee) => {
+              const matchedTicket = reservationData.reservation.tickets?.find(
+                (ticket) =>
+                  ticket.id === attendee.reservationTicketId ||
+                  ticket.ticketId === attendee.reservationTicketId
+              );
+
+              return {
+                reservationTicketId: matchedTicket?.ticketId ?? attendee.reservationTicketId,
+                name: attendee.name,
+                age: attendee.age,
+                gender: attendee.gender,
+              };
+            }) ?? [],
         }}
-        existingAttendees={reservationData.reservation.attendees}
+        existingAttendees={
+          reservationData.reservation.attendees?.map((attendee) => {
+            const matchedTicket = reservationData.reservation.tickets?.find(
+              (ticket) =>
+                ticket.id === attendee.reservationTicketId ||
+                ticket.ticketId === attendee.reservationTicketId
+            );
+
+            return {
+              ...attendee,
+              reservationTicketId: matchedTicket?.ticketId ?? attendee.reservationTicketId,
+            };
+          }) ?? []
+        }
         onContinue={(value) =>
           handleReservationStageUpdate(
             'ATTENDEES',
@@ -437,6 +459,7 @@ export function RegisterWrapper() {
 
   return (
     <Container fluid className={styles.container}>
+      <RegistrationStepIndicator />
       {reservationStageUI}
       {reservationError.data?.message && (
         <ReservationErrorModal

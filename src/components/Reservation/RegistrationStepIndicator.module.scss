@@ -1,0 +1,28 @@
+.wrapper {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.label {
+  color: var(--mantine-primary-color-filled);
+  letter-spacing: 0.04em;
+}
+
+.progress {
+  display: flex;
+  width: 100%;
+  gap: 6px;
+}
+
+.segment {
+  height: 4px;
+  flex: 1;
+  border-radius: 999px;
+  background: var(--mantine-color-gray-2);
+  transition: background-color 180ms ease;
+}
+
+.segment.active {
+  background: var(--mantine-primary-color-filled);
+}

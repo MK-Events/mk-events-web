@@ -93,13 +93,7 @@ export function EventDetails() {
           </section>
 
           <section>
-            <TicketPricing
-              type={'All'}
-              tickets={event.tickets}
-              selectable={true}
-              selectedTicket={event.tickets[0]}
-              onTicketSelect={(ticket) => console.log(ticket)}
-            />
+            <TicketPricing type={'All'} tickets={event.tickets} usage={'eventDetails'} />
           </section>
 
           <section>
