@@ -80,7 +80,7 @@ export function RegistrationWelcome({ event, onBegin, loading = false }: Registr
                     .split('{price}')
                     .join(`₹${displayTicketPrice}`)}
                 </Text>
-                <Stack align={'center'} gap={'xs'}>
+                <Stack align={'center'} gap={'xs'} className={styles.durationBlock}>
                   <Button size="lg" loading={loading} onClick={onBegin}>
                     {welcomeScreen.beginRegistrationLabel}
                   </Button>
@@ -90,40 +90,43 @@ export function RegistrationWelcome({ event, onBegin, loading = false }: Registr
                 </Stack>
               </Group>
 
-              <Group justify={'space-between'}>
+              <div className={styles.otherWaysRow}>
                 {otherRegistrationPlatforms.length > 0 ? (
                   <>
                     <Text size={'sm'} c="dimmed">
                       {welcomeScreen.otherWaysToRegisterLabel}
                     </Text>
-                    {otherRegistrationPlatforms.map((platform, index: number) => (
-                      <Tooltip
-                        key={`${platform.title}-${index}`}
-                        label={platform.description}
-                        position="top"
-                        withArrow
-                      >
-                        <a
-                          href={platform.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          style={{
-                            color: platform.color,
-                            textDecoration: 'none',
-                          }}
+
+                    <div className={styles.platformList}>
+                      {otherRegistrationPlatforms.map((platform, index: number) => (
+                        <Tooltip
+                          key={`${platform.title}-${index}`}
+                          label={platform.description}
+                          position="top"
+                          withArrow
                         >
-                          <Group gap={6} align="center" wrap="nowrap">
-                            <Text size={'sm'} fw={600} c={'dimmed'}>
-                              {platform.title}
-                            </Text>
-                            <IconArrowRight size={18} />
-                          </Group>
-                        </a>
-                      </Tooltip>
-                    ))}
+                          <a
+                            href={platform.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                              color: platform.color,
+                              textDecoration: 'none',
+                            }}
+                          >
+                            <Group gap={6} align="center" wrap="nowrap">
+                              <Text size={'sm'} fw={600} c={'dimmed'}>
+                                {platform.title}
+                              </Text>
+                              <IconArrowRight size={18} />
+                            </Group>
+                          </a>
+                        </Tooltip>
+                      ))}
+                    </div>
                   </>
                 ) : null}
-              </Group>
+              </div>
             </Stack>
           </div>
 

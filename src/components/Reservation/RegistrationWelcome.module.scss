@@ -72,6 +72,48 @@
   }
 }
 
+.ticketPrice {
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+.durationBlock {
+  @media (max-width: 600px) {
+    width: 100%;
+    align-items: flex-start;
+  }
+}
+
+.otherWaysRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.platformList {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 6px;
+  flex-wrap: wrap;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
+
 .modeActions {
   flex-wrap: wrap;
 
