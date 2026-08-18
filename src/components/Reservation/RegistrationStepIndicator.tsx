@@ -38,9 +38,9 @@ export function RegistrationStepIndicator() {
   const currentLabel = STEPS[currentIndex].label;
 
   return (
-    <Container mb="md" className={styles.container}>
+    <Container mb="md" p={0} className={styles.wrapper}>
       <Paper withBorder radius="md" p="md" className={styles.stepIndicator}>
-        <Stack gap="xs" className={styles.wrapper}>
+        <Stack gap="xs">
           <Group justify="space-between" align="center">
             <Text size="xs" fw={700} className={styles.label}>
               {currentLabel}
