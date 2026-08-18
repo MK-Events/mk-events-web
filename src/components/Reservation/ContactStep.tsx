@@ -4,6 +4,7 @@ import {
   Button,
   Card,
   Group,
+  Modal,
   NumberInput,
   Select,
   Stack,
@@ -50,6 +51,8 @@ export function ContactStep({
     ...contactData,
   });
   const [countryCode, setCountryCode] = useState<string>('+91');
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
+  const [pendingAction, setPendingAction] = useState<'save' | 'continue' | null>(null);
 
   const formatPhoneValue = (code: string, local: string) => {
     const sanitizedCode = code.startsWith('+') ? code : `+${code}`;
@@ -142,6 +145,7 @@ export function ContactStep({
 
   const parsedPhone = getPhoneParts(contact.phone, countryCode);
   const localPhoneNumber = parsedPhone.local;
+  const isPhoneValid = localPhoneNumber.replace(/\D/g, '').length === 10;
 
   const handleCountryCodeChange = (nextCode: string | null) => {
     const selectedCode = nextCode ?? '+91';
@@ -159,10 +163,32 @@ export function ContactStep({
     email: value.email,
   });
 
+  const handleConfirmContactAction = () => {
+    const sanitized = sanitizeContactPayload(contact);
+
+    if (pendingAction === 'save') {
+      onSave(sanitized);
+    }
+
+    if (pendingAction === 'continue') {
+      onContinue(sanitized);
+    }
+
+    setIsConfirmModalOpen(false);
+    setPendingAction(null);
+  };
+
+  const openConfirmModal = (action: 'save' | 'continue') => {
+    if (!hasValidContactData) {
+      return;
+    }
+
+    setPendingAction(action);
+    setIsConfirmModalOpen(true);
+  };
+
   const hasValidContactData =
-    contact.name.trim().length > 0 &&
-    contact.phone.trim().length > 0 &&
-    contact.email.trim().length > 0;
+    contact.name.trim().length > 0 && isPhoneValid && contact.email.trim().length > 0;
 
   return (
     <div className={styles.wrapper}>
@@ -240,8 +266,12 @@ export function ContactStep({
                 autoComplete="tel"
                 style={{ flex: 1 }}
                 value={localPhoneNumber}
+                maxLength={10}
+                error={
+                  contact.phone && !isPhoneValid ? 'Phone number must be 10 digits' : undefined
+                }
                 onChange={(event) => {
-                  const phone = event.currentTarget.value.replace(/\D/g, '');
+                  const phone = event.currentTarget.value.replace(/\D/g, '').slice(0, 10);
                   updateReservationContact('phone', formatPhoneValue(countryCode, phone));
                 }}
               />
@@ -262,7 +292,7 @@ export function ContactStep({
           <div className={styles.footer}>
             <Button
               variant={'light'}
-              onClick={() => onSave(sanitizeContactPayload(contact))}
+              onClick={() => openConfirmModal('save')}
               disabled={loading || !hasValidContactData}
             >
               {contactStep.saveLabel}
@@ -271,13 +301,44 @@ export function ContactStep({
             <Button
               loading={loading}
               disabled={loading || !hasValidContactData}
-              onClick={() => onContinue(sanitizeContactPayload(contact))}
+              onClick={() => openConfirmModal('continue')}
             >
               {contactStep.continueLabel}
             </Button>
           </div>
         </Stack>
       </Card>
+
+      <Modal
+        opened={isConfirmModalOpen}
+        onClose={() => {
+          setIsConfirmModalOpen(false);
+          setPendingAction(null);
+        }}
+        title="Confirm contact details"
+        centered
+        radius="lg"
+      >
+        <Stack gap="md">
+          <Text size="sm" c="dimmed">
+            Please make sure your contact details are correct. Further communication for your
+            registration will be done through this number and email.
+          </Text>
+
+          <Group justify="flex-end">
+            <Button
+              variant="default"
+              onClick={() => {
+                setIsConfirmModalOpen(false);
+                setPendingAction(null);
+              }}
+            >
+              Cancel
+            </Button>
+            <Button onClick={handleConfirmContactAction}>Confirm</Button>
+          </Group>
+        </Stack>
+      </Modal>
     </div>
   );
 }
