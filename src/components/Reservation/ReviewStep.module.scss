@@ -1,7 +1,11 @@
 .wrapper {
   width: 100%;
-  max-width: 820px;
+  max-width: 900px;
   margin: 0 auto;
+}
+
+.backButton {
+  margin: 1rem 0;
 }
 
 .card {
@@ -13,7 +17,7 @@
 }
 
 .section {
-  padding: 16px;
+  margin: 1rem;
   border: 1px solid var(--mantine-color-default-border);
   border-radius: var(--mantine-radius-md);
 }

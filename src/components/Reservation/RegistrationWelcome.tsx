@@ -22,8 +22,20 @@ export function RegistrationWelcome({ event, onBegin, loading = false }: Registr
   const registration = event.registration;
   const {
     sections: { welcomeScreen },
-    registrationModes,
+    otherRegistrationPlatforms,
   } = usePageConfig('registration');
+
+  const lowestNonZeroTicketPrice = event.tickets.reduce<number>((lowest, ticket) => {
+    if (ticket.price > 0 && ticket.price < lowest) {
+      return ticket.price;
+    }
+
+    return lowest;
+  }, Number.POSITIVE_INFINITY);
+
+  const displayTicketPrice = Number.isFinite(lowestNonZeroTicketPrice)
+    ? lowestNonZeroTicketPrice
+    : 0;
 
   return (
     <div className={styles.wrapper}>
@@ -60,7 +72,62 @@ export function RegistrationWelcome({ event, onBegin, loading = false }: Registr
             </Text>
           </Stack>
 
-          <Group className={styles.eventMeta} gap="lg">
+          <div className={styles.footer}>
+            <Stack w={'100%'} gap="xl">
+              <Group gap="xs" className={styles.ticketPrice} justify={'space-between'}>
+                <Text size="xl" fw={700}>
+                  {welcomeScreen.continueUserDetailMessage
+                    .split('{price}')
+                    .join(`₹${displayTicketPrice}`)}
+                </Text>
+                <Stack align={'center'} gap={'xs'}>
+                  <Button size="lg" loading={loading} onClick={onBegin}>
+                    {welcomeScreen.beginRegistrationLabel}
+                  </Button>
+                  <Text size="sm" c="dimmed">
+                    {welcomeScreen.registrationDurationLabel}
+                  </Text>
+                </Stack>
+              </Group>
+
+              <Group justify={'space-between'}>
+                {otherRegistrationPlatforms.length > 0 ? (
+                  <>
+                    <Text size={'sm'} c="dimmed">
+                      {welcomeScreen.otherWaysToRegisterLabel}
+                    </Text>
+                    {otherRegistrationPlatforms.map((platform, index: number) => (
+                      <Tooltip
+                        key={`${platform.title}-${index}`}
+                        label={platform.description}
+                        position="top"
+                        withArrow
+                      >
+                        <a
+                          href={platform.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            color: platform.color,
+                            textDecoration: 'none',
+                          }}
+                        >
+                          <Group gap={6} align="center" wrap="nowrap">
+                            <Text size={'sm'} fw={600} c={'dimmed'}>
+                              {platform.title}
+                            </Text>
+                            <IconArrowRight size={18} />
+                          </Group>
+                        </a>
+                      </Tooltip>
+                    ))}
+                  </>
+                ) : null}
+              </Group>
+            </Stack>
+          </div>
+
+          <Group className={styles.eventMeta}>
             <div className={styles.metaItem}>
               <IconCalendar size={19} />
               <div>
@@ -125,79 +192,6 @@ export function RegistrationWelcome({ event, onBegin, loading = false }: Registr
               </Stack>
             </div>
           )}
-
-          <div className={styles.footer}>
-            <Stack gap={3}>
-              <Text size="sm" fw={600}>
-                {welcomeScreen.readyToRegisterLabel}
-              </Text>
-
-              <Text size="xs" c="dimmed">
-                {welcomeScreen.continueUserDetailMessage}
-              </Text>
-            </Stack>
-
-            {registrationModes.length > 0 ? (
-              <Group gap="xs" justify="flex-end" className={styles.modeActions}>
-                {registrationModes.map((mode, index) => {
-                  const buttonStyle = mode.color
-                    ? {
-                        backgroundColor: mode.color,
-                        borderColor: mode.color,
-                      }
-                    : undefined;
-                  const hasUrl = Boolean(mode.url && mode.url.trim());
-                  const isEnabled = Boolean(mode.enabled);
-                  const tooltipLabel = mode.description?.trim() || mode.title;
-
-                  if (hasUrl && isEnabled) {
-                    return (
-                      <Tooltip
-                        key={`${mode.registerButtonLabel}-link-${index}`}
-                        label={tooltipLabel}
-                      >
-                        <span>
-                          <Button
-                            size="md"
-                            component="a"
-                            href={mode.url as string}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={buttonStyle}
-                          >
-                            {mode.registerButtonLabel}
-                          </Button>
-                        </span>
-                      </Tooltip>
-                    );
-                  }
-
-                  return (
-                    <Tooltip
-                      key={`${mode.registerButtonLabel}-local-${index}`}
-                      label={tooltipLabel}
-                    >
-                      <span>
-                        <Button
-                          size="md"
-                          disabled={!isEnabled}
-                          loading={isEnabled ? loading : false}
-                          onClick={!isEnabled || hasUrl ? undefined : onBegin}
-                          style={buttonStyle}
-                        >
-                          {mode.registerButtonLabel}
-                        </Button>
-                      </span>
-                    </Tooltip>
-                  );
-                })}
-              </Group>
-            ) : (
-              <Button size="md" loading={loading} onClick={onBegin}>
-                {welcomeScreen.beginRegistrationLabel}
-              </Button>
-            )}
-          </div>
         </Stack>
       </Card>
     </div>

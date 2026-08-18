@@ -2,14 +2,16 @@
   "sections": {
     "welcomeScreen": {
       "title": "Event Registration",
-      "viewDetailsLabel": "View Details",
+      "viewDetailsLabel": "More Details",
       "dateLabel": "Date",
       "timeLabel": "Time",
       "venueLabel": "Venue",
       "beforeYouRegisterLabel": "Before you register",
       "readyToRegisterLabel": "Ready to register?",
-      "continueUserDetailMessage": "Continue to provide your details and select your tickets.",
-      "beginRegistrationLabel": "Begin Registration"
+      "continueUserDetailMessage": "Tickets starting at {price}",
+      "beginRegistrationLabel": "Begin Registration",
+      "otherWaysToRegisterLabel": "Other ways to register",
+      "registrationDurationLabel": "Takes about 2 mins"
     },
     "errorModal": {
       "title": "Something went wrong",
@@ -36,7 +38,7 @@
     "contactStep": {
       "backLabel": "Back",
       "title": "Contact Details",
-      "description": "Please provide your details to continue with the registration.",
+      "description": "Please provide your contact information. This will be used for sending your tickets and any event updates.",
       "fullNameLabel": "Full name",
       "fullNamePlaceholder": "Enter your full name",
       "ageLabel": "Age",
@@ -91,7 +93,7 @@
       ],
       "genderNotFoundMessage": "No gender found",
       "saveLabel": "Save Attendees",
-      "continueLabel": "Save Attendees & Continue"
+      "continueLabel": "Save Attendees & Review"
     },
     "reviewStep": {
       "backLabel": "Back",
@@ -160,21 +162,13 @@
       "message": "Unable to create reservation."
     }
   },
-  "registrationModes": [
+  "otherRegistrationPlatforms": [
     {
-      "title": "Register on District",
-      "description": "Register on district to access this event. You will be redirected to the district registration page.",
+      "title": "View event on District",
+      "description": "You will be redirected to the district registration page.",
       "registerButtonLabel": "Register on District",
       "url": "https://www.district.in/events/onam-blast-2026-aug6-2026-buy-tickets",
       "color": "#9D00FF",
-      "enabled": true
-    },
-    {
-      "title": "Register on MK Events",
-      "description": "Register on MK Events to access this event. You will continue to register here.",
-      "registerButtonLabel": "Register on MK Events",
-      "url": null,
-      "color": null,
       "enabled": true
     }
   ]

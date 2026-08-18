@@ -4,6 +4,7 @@ export * from './PaymentSuccess';
 export * from './Register';
 export * from './RegistrationClosed';
 export * from './RegistrationComingSoon';
+export * from './RegistrationStepIndicator';
 export * from './RegistrationWelcome';
 export * from './ReservationCancelled';
 export * from './ReservationErrorModal';

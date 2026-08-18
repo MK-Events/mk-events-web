@@ -69,6 +69,27 @@ export function AttendeeStep({
   const [attendees, setAttendees] = useState<AttendeeForm[]>(value?.attendees ?? []);
   const normalizedSelectedTickets = selectedTickets ?? [];
 
+  const resolveTicketId = (reservationTicketId: string) => {
+    const matchingTicket = tickets.find(
+      (ticket) =>
+        ticket.id === reservationTicketId ||
+        ticket.id === reservationTicketId ||
+        ticket.id === reservationTicketId
+    );
+
+    return matchingTicket?.id ?? reservationTicketId;
+  };
+
+  const normalizeAttendee = (attendee: {
+    reservationTicketId: string;
+    name: string;
+    age: number;
+    gender: Gender;
+  }) => ({
+    ...attendee,
+    reservationTicketId: resolveTicketId(attendee.reservationTicketId),
+  });
+
   const buildDefaultAttendees = () => {
     const attendeesByTicket = new Map<string, ExistingAttendee[]>();
 
@@ -118,16 +139,18 @@ export function AttendeeStep({
 
   const sourceAttendees = (() => {
     if (value?.attendees?.length) {
-      return value.attendees;
+      return value.attendees.map(normalizeAttendee);
     }
 
     if (existingAttendees?.length) {
-      return existingAttendees.map((attendee) => ({
-        reservationTicketId: attendee.reservationTicketId,
-        name: attendee.name,
-        age: attendee.age,
-        gender: attendee.gender,
-      }));
+      return existingAttendees.map((attendee) =>
+        normalizeAttendee({
+          reservationTicketId: attendee.reservationTicketId,
+          name: attendee.name,
+          age: attendee.age,
+          gender: attendee.gender,
+        })
+      );
     }
 
     if (normalizedSelectedTickets.length) {

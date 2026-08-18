@@ -14,7 +14,7 @@ import {
 import { useAppConfig } from '@mk/hooks';
 import { usePageConfig } from '@mk/hooks/usePageConfig';
 import type { Ticket, TicketFilterOptions } from '@mk/types';
-import { IconCheck, IconCircleCheckFilled, IconInfoCircle } from '@tabler/icons-react';
+import { IconCheck, IconInfoCircle } from '@tabler/icons-react';
 
 import classes from './TicketPricing.module.scss';
 
@@ -26,6 +26,7 @@ interface TicketPricingProps {
   selectedTickets?: Array<{ ticketId: string; quantity: number }>;
   onTicketSelect?: (ticket: Ticket) => void;
   onTicketQuantityChange?: (ticket: Ticket, quantity: number) => void;
+  usage?: 'eventDetails' | 'registration';
 }
 
 interface TicketCardProps {
@@ -69,12 +70,8 @@ function TicketCard({
       <Stack gap="md" h="100%">
         {/* Header */}
         <Stack gap={4} align="center">
-          <Title order={3}>
+          <Text fw={600} fz="lg">
             {ticket.attendeeType ? config.event.attendeeLabels[ticket.attendeeType] : 'General'}
-          </Title>
-
-          <Text c="dimmed" size="sm">
-            {pageConfig.misc.eventPassLabel}
           </Text>
         </Stack>
 
@@ -162,61 +159,47 @@ function TicketCard({
                   </Group>
                 </Group>
               ) : (
-                <Group justify="space-between" align="center">
-                  <Text size="sm" fw={600}>
-                    {selectedQuantity > 0
-                      ? `Selected: ${selectedQuantity} / Max: ${maxQuantity ?? 0}`
-                      : `Select quantity (Max: ${maxQuantity ?? 0})`}
+                <Group justify="center" align="center" gap={6}>
+                  <Button
+                    variant="light"
+                    size="compact-sm"
+                    radius="xl"
+                    disabled={selectedQuantity === 0 || soldOut}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onQuantityChange?.(ticket, Math.max(0, selectedQuantity - 1));
+                    }}
+                  >
+                    -
+                  </Button>
+
+                  <Text
+                    size="sm"
+                    fw={700}
+                    c={selectedQuantity > 0 ? 'var(--mantine-primary-color-filled)' : 'dimmed'}
+                    px="xs"
+                    style={{ minWidth: 64, textAlign: 'center' }}
+                  >
+                    {selectedQuantity}/{maxQuantity ?? 0}
                   </Text>
 
-                  <Group gap={6}>
-                    <Button
-                      variant="light"
-                      size="compact-sm"
-                      radius="xl"
-                      disabled={selectedQuantity === 0 || soldOut}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onQuantityChange?.(ticket, Math.max(0, selectedQuantity - 1));
-                      }}
-                    >
-                      -
-                    </Button>
-
-                    <Button
-                      variant={selected ? 'filled' : 'light'}
-                      size="compact-sm"
-                      radius="xl"
-                      leftSection={selected ? <IconCircleCheckFilled size={16} /> : undefined}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onSelect?.(ticket);
-                      }}
-                      disabled={
-                        soldOut || selectedQuantity >= (maxQuantity ?? Number.MAX_SAFE_INTEGER)
-                      }
-                    >
-                      {selected ? 'Selected' : 'Select'}
-                    </Button>
-
-                    <Button
-                      variant="light"
-                      size="compact-sm"
-                      radius="xl"
-                      disabled={
-                        soldOut || selectedQuantity >= (maxQuantity ?? Number.MAX_SAFE_INTEGER)
-                      }
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onQuantityChange?.(
-                          ticket,
-                          Math.min(maxQuantity ?? Number.MAX_SAFE_INTEGER, selectedQuantity + 1)
-                        );
-                      }}
-                    >
-                      +
-                    </Button>
-                  </Group>
+                  <Button
+                    variant="light"
+                    size="compact-sm"
+                    radius="xl"
+                    disabled={
+                      soldOut || selectedQuantity >= (maxQuantity ?? Number.MAX_SAFE_INTEGER)
+                    }
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onQuantityChange?.(
+                        ticket,
+                        Math.min(maxQuantity ?? Number.MAX_SAFE_INTEGER, selectedQuantity + 1)
+                      );
+                    }}
+                  >
+                    +
+                  </Button>
                 </Group>
               )}
 
@@ -241,6 +224,7 @@ export function TicketPricing({
   selectedTickets = [],
   onTicketSelect,
   onTicketQuantityChange,
+  usage = 'registration',
 }: TicketPricingProps) {
   const config = usePageConfig('eventDetails');
   const filteredTickets = tickets.filter((ticket) => {
@@ -257,82 +241,89 @@ export function TicketPricing({
     }
   });
 
+  const renderedTickets = filteredTickets.map((ticket) => {
+    const isSoldOut = ticket.availableQuantity <= ticket.soldCount;
+    const selectedQuantity =
+      selectedTickets.find((selection) => selection.ticketId === ticket.id)?.quantity ?? 0;
+
+    const paidChildCapacity = tickets.reduce((total, ticketItem) => {
+      if (!ticketItem || ticketItem.price === 0 || ticketItem.attendeeType === 'Child') {
+        return total;
+      }
+
+      const ticketQuantity =
+        selectedTickets.find((selection) => selection.ticketId === ticketItem.id)?.quantity ?? 0;
+
+      return total + (ticketItem.maxChild ?? 0) * ticketQuantity;
+    }, 0);
+
+    const selectedChildQuantity = selectedTickets.reduce((total, selection) => {
+      const ticketItem = tickets.find((item) => item.id === selection.ticketId);
+
+      if (!ticketItem || ticketItem.price !== 0 || ticketItem.attendeeType !== 'Child') {
+        return total;
+      }
+
+      return total + selection.quantity;
+    }, 0);
+
+    const childLimit =
+      ticket.price === 0 && ticket.attendeeType === 'Child'
+        ? Math.max(
+            0,
+            paidChildCapacity -
+              selectedChildQuantity +
+              (selectedTickets.find((selection) => selection.ticketId === ticket.id)?.quantity ?? 0)
+          )
+        : (ticket.maxPerBooking ?? Number.MAX_SAFE_INTEGER);
+
+    const maxQuantity =
+      ticket.price === 0 && ticket.attendeeType === 'Child'
+        ? childLimit
+        : (ticket.maxPerBooking ?? Number.MAX_SAFE_INTEGER);
+
+    return (
+      <TicketCard
+        key={ticket.id}
+        ticket={ticket}
+        selectable={selectable}
+        selected={selectedTicket?.id === ticket.id || selectedQuantity > 0}
+        selectedQuantity={selectedQuantity}
+        maxQuantity={isSoldOut ? 0 : maxQuantity}
+        soldOut={isSoldOut}
+        onSelect={(selectedTicketItem) => {
+          const currentQuantity =
+            selectedTickets.find((selection) => selection.ticketId === selectedTicketItem.id)
+              ?.quantity ?? 0;
+          const nextQuantity =
+            selectedTicketItem.price === 0 && selectedTicketItem.attendeeType === 'Child'
+              ? currentQuantity > 0
+                ? currentQuantity
+                : 1
+              : currentQuantity > 0
+                ? 0
+                : 1;
+
+          onTicketQuantityChange?.(selectedTicketItem, nextQuantity);
+          onTicketSelect?.(selectedTicketItem);
+        }}
+        onQuantityChange={onTicketQuantityChange}
+      />
+    );
+  });
+
   return (
     <Stack gap={'xl'}>
-      <Title order={2}>{config.sections.tickets.title}</Title>
-      <SimpleGrid cols={{ base: 1, sm: 2, lg: 3, xl: 4 }} spacing="lg">
-        {filteredTickets.map((ticket) => {
-          const isSoldOut = ticket.availableQuantity <= ticket.soldCount;
-          const selectedQuantity =
-            selectedTickets.find((selection) => selection.ticketId === ticket.id)?.quantity ?? 0;
+      {usage === 'eventDetails' ? <Title order={3}>{config.sections.tickets.title}</Title> : null}
 
-          const paidChildCapacity = tickets.reduce((total, ticketItem) => {
-            if (!ticketItem || ticketItem.price === 0 || ticketItem.attendeeType === 'Child') {
-              return total;
-            }
+      <div className={classes.mobileScroll}>{renderedTickets}</div>
 
-            const ticketQuantity =
-              selectedTickets.find((selection) => selection.ticketId === ticketItem.id)?.quantity ??
-              0;
-
-            return total + (ticketItem.maxChild ?? 0) * ticketQuantity;
-          }, 0);
-
-          const selectedChildQuantity = selectedTickets.reduce((total, selection) => {
-            const ticketItem = tickets.find((item) => item.id === selection.ticketId);
-
-            if (!ticketItem || ticketItem.price !== 0 || ticketItem.attendeeType !== 'Child') {
-              return total;
-            }
-
-            return total + selection.quantity;
-          }, 0);
-
-          const childLimit =
-            ticket.price === 0 && ticket.attendeeType === 'Child'
-              ? Math.max(
-                  0,
-                  paidChildCapacity -
-                    selectedChildQuantity +
-                    (selectedTickets.find((selection) => selection.ticketId === ticket.id)
-                      ?.quantity ?? 0)
-                )
-              : (ticket.maxPerBooking ?? Number.MAX_SAFE_INTEGER);
-
-          const maxQuantity =
-            ticket.price === 0 && ticket.attendeeType === 'Child'
-              ? childLimit
-              : (ticket.maxPerBooking ?? Number.MAX_SAFE_INTEGER);
-
-          return (
-            <TicketCard
-              key={ticket.id}
-              ticket={ticket}
-              selectable={selectable}
-              selected={selectedTicket?.id === ticket.id || selectedQuantity > 0}
-              selectedQuantity={selectedQuantity}
-              maxQuantity={isSoldOut ? 0 : maxQuantity}
-              soldOut={isSoldOut}
-              onSelect={(selectedTicketItem) => {
-                const currentQuantity =
-                  selectedTickets.find((selection) => selection.ticketId === selectedTicketItem.id)
-                    ?.quantity ?? 0;
-                const nextQuantity =
-                  selectedTicketItem.price === 0 && selectedTicketItem.attendeeType === 'Child'
-                    ? currentQuantity > 0
-                      ? currentQuantity
-                      : 1
-                    : currentQuantity > 0
-                      ? 0
-                      : 1;
-
-                onTicketQuantityChange?.(selectedTicketItem, nextQuantity);
-                onTicketSelect?.(selectedTicketItem);
-              }}
-              onQuantityChange={onTicketQuantityChange}
-            />
-          );
-        })}
+      <SimpleGrid
+        cols={selectable ? { base: 1, sm: 2, lg: 2, xl: 3 } : { base: 1, sm: 2, lg: 3, xl: 4 }}
+        spacing="lg"
+        className={classes.desktopGrid}
+      >
+        {renderedTickets}
       </SimpleGrid>
     </Stack>
   );
