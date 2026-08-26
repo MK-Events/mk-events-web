@@ -31,7 +31,8 @@
       "Child": "Children",
       "Guest": "Guest",
       "Corporate": "Corporate Employee",
-      "AdultPremium": "Adult Premium"
+      "AdultPremium": "Adult Premium",
+      "AdultVIP": "Adult VIP"
     }
   },
   "misc": {
