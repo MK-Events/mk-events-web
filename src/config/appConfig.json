@@ -29,7 +29,8 @@
       "College": "College Student",
       "School": "School Student",
       "Child": "Children",
-      "Guest": "Guest"
+      "Guest": "Guest",
+      "Corporate": "Corporate Employee"
     }
   },
   "misc": {

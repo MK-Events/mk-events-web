@@ -16,6 +16,6 @@ export interface Ticket {
   includedBenefits: string[];
 }
 
-export type AttendeeTypes = 'School' | 'College' | 'Adult' | 'Child' | 'Guest';
+export type AttendeeTypes = 'School' | 'College' | 'Adult' | 'Child' | 'Guest' | 'Corporate';
 
 export type TicketFilterOptions = 'Free' | 'Paid' | 'All';

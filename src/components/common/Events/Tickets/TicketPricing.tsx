@@ -71,7 +71,7 @@ function TicketCard({
         {/* Header */}
         <Stack gap={4} align="center">
           <Text fw={600} fz="lg">
-            {ticket.attendeeType ? config.event.attendeeLabels[ticket.attendeeType] : 'General'}
+            {ticket.attendeeType && ticket.attendeeType in config.event.attendeeLabels ? config.event.attendeeLabels[ticket.attendeeType as keyof typeof config.event.attendeeLabels] : 'General'}
           </Text>
         </Stack>
 
@@ -135,7 +135,7 @@ function TicketCard({
         <div style={{ flex: 1 }} />
 
         {/* Footer */}
-        {selectable && (
+        {selectable ? (
           <>
             <Divider variant="dashed" />
 
@@ -210,7 +210,7 @@ function TicketCard({
               ) : null}
             </Stack>
           </>
-        )}
+        ) : null}
       </Stack>
     </Paper>
   );
@@ -312,19 +312,27 @@ export function TicketPricing({
     );
   });
 
+  const isEventDetailsScrollable = usage === 'eventDetails';
+
   return (
-    <Stack gap={'xl'}>
+    <Stack gap={'xxl'}>
       {usage === 'eventDetails' ? <Title order={3}>{config.sections.tickets.title}</Title> : null}
 
-      <div className={classes.mobileScroll}>{renderedTickets}</div>
-
-      <SimpleGrid
-        cols={selectable ? { base: 1, sm: 2, lg: 2, xl: 3 } : { base: 1, sm: 2, lg: 3, xl: 4 }}
-        spacing="lg"
-        className={classes.desktopGrid}
+      <div
+        className={`${classes.mobileScroll} ${isEventDetailsScrollable ? classes.eventDetailsScroll : ''}`}
       >
         {renderedTickets}
-      </SimpleGrid>
+      </div>
+
+      {!isEventDetailsScrollable && (
+        <SimpleGrid
+          cols={selectable ? { base: 1, sm: 2, lg: 2, xl: 3 } : { base: 1, sm: 2, lg: 3, xl: 4 }}
+          spacing="lg"
+          className={classes.desktopGrid}
+        >
+          {renderedTickets}
+        </SimpleGrid>
+      )}
     </Stack>
   );
 }
