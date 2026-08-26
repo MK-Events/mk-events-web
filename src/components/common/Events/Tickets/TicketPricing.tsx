@@ -71,7 +71,7 @@ function TicketCard({
         {/* Header */}
         <Stack gap={4} align="center">
           <Text fw={600} fz="lg">
-            {ticket.attendeeType && ticket.attendeeType in config.event.attendeeLabels ? config.event.attendeeLabels[ticket.attendeeType as keyof typeof config.event.attendeeLabels] : 'General'}
+            {ticket.attendeeType ? config.event.attendeeLabels[ticket.attendeeType] : 'General'}
           </Text>
         </Stack>
 

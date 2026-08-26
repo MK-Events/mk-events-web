@@ -30,7 +30,8 @@
       "School": "School Student",
       "Child": "Children",
       "Guest": "Guest",
-      "Corporate": "Corporate Employee"
+      "Corporate": "Corporate Employee",
+      "AdultPremium": "Adult Premium"
     }
   },
   "misc": {
