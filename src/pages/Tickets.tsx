@@ -14,8 +14,8 @@ import {
   TextInput,
   Title,
 } from '@mantine/core';
-import { BookingCard, EventQrCode } from '@mk/components';
-import { useAppConfig, useAppDispatch } from '@mk/hooks';
+import { BookingCard, EventQrCode, SupportCta } from '@mk/components';
+import { useAppConfig, useAppDispatch, usePageConfig } from '@mk/hooks';
 import { useFindBookingsMutation, useGetBookingQrMutation } from '@mk/store/api/booking.api';
 import { useGetEventQuery, useGetEventsQuery } from '@mk/store/api/events.api';
 import { resetAll } from '@mk/store/slice/reservationSlice';
@@ -36,6 +36,7 @@ const EventTicketDownload = lazy(() => import('@mk/components/Bookings/EventTick
 
 export function Tickets() {
   const config = useAppConfig();
+  const pageConfig = usePageConfig('events');
   const dispatch = useAppDispatch();
   const [step, setStep] = useState<Step>('event');
 
@@ -241,7 +242,7 @@ export function Tickets() {
             <Loader />
           </Paper>
         ) : (
-          <Stack gap="md">
+          <Stack gap="lg">
             <Select
               label="Event"
               placeholder="Select your event"
@@ -262,6 +263,8 @@ export function Tickets() {
             </Text>
           </Stack>
         )}
+
+        <SupportCta data={pageConfig.supportCta.events} />
       </Stack>
     );
   }
@@ -329,6 +332,8 @@ export function Tickets() {
             </Button>
           </Stack>
         </Paper>
+
+        <SupportCta data={pageConfig.supportCta.events} />
       </Stack>
     );
   }
@@ -375,6 +380,8 @@ export function Tickets() {
             />
           ))}
         </Stack>
+
+        <SupportCta data={pageConfig.supportCta.events} />
       </Stack>
     );
   }
@@ -543,6 +550,8 @@ export function Tickets() {
             {getErrorMessage(getBookingQrError, 'Unable to retrieve your event pass.')}
           </Alert>
         )}
+
+        <SupportCta data={pageConfig.supportCta.events} />
       </Stack>
     );
   }

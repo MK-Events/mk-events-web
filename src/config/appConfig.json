@@ -85,6 +85,22 @@
       }
     ]
   },
+  "supportCta": {
+    "events": {
+      "title": "Not booked yet?",
+      "description": "Explore upcoming events and reserve your spot before registration closes.",
+      "buttonLabel": "Browse Upcoming Events",
+      "link": "/events",
+      "linkType": "internal"
+    },
+    "help": {
+      "title": "Need help with your booking?",
+      "description": "If you are facing any problems or have a query, please reach out to us on WhatsApp.",
+      "buttonLabel": "Chat on WhatsApp",
+      "link": "https://wa.me/918825705220",
+      "linkType": "external"
+    }
+  },
   "pwa": {
     "installButtonLabel": "Install MK Events App"
   },

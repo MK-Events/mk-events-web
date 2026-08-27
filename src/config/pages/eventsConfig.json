@@ -17,5 +17,14 @@
       "title": "Past Event",
       "caption": "Take a look at some of our previous celebrations"
     }
+  },
+  "supportCta": {
+    "events": {
+      "title": "Not booked yet?",
+      "description": "Explore upcoming events and reserve your spot before registration closes.",
+      "buttonLabel": "Browse Upcoming Events",
+      "link": "/events",
+      "linkType": "internal"
+    }
   }
 }

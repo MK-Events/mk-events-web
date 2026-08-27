@@ -14,9 +14,10 @@ import {
   ResumeRegistrationModal,
   ReviewStep,
   StepLoader,
+  SupportCta,
   TicketsStep,
 } from '@mk/components';
-import { useAppDispatch, useAppSelector, useReservationPayment } from '@mk/hooks';
+import { useAppDispatch, useAppSelector, usePageConfig, useReservationPayment } from '@mk/hooks';
 import { useGetEventQuery } from '@mk/store/api/events.api';
 import {
   useBackReservationMutation,
@@ -45,6 +46,7 @@ export function RegisterWrapper() {
   const navigate = useNavigate();
   const deviceId = getDeviceId();
   const dispatch = useAppDispatch();
+  const pageConfig = usePageConfig('registration');
   const reservationData = useAppSelector((state) => state.reservation.reservationdata);
   const reservationError = useAppSelector((state) => state.reservation.reservationError);
   const [removeExistingProgress, setRemoveExistingProgress] = useState<boolean>(false);
@@ -460,6 +462,11 @@ export function RegisterWrapper() {
   return (
     <Container fluid className={styles.container}>
       <RegistrationStepIndicator />
+      {stage !== 'WELCOME' ? (
+        <Container size="md" mt="xs">
+          <SupportCta data={pageConfig.supportCta.help} showIcon collapsed />
+        </Container>
+      ) : null}
       {reservationStageUI}
       {reservationError.data?.message && (
         <ReservationErrorModal
