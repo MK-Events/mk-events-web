@@ -139,6 +139,96 @@
   display: none;
 }
 
+.mobileSelectable {
+  display: none;
+}
+
+.mobileSectionTitle {
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.freeEntrySection {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--mantine-color-default-border);
+}
+
+.compactTicket {
+  min-height: auto;
+  padding: 0.75rem 0.875rem;
+
+  &::before,
+  &::after {
+    display: none;
+  }
+}
+
+.compactSelected {
+  border: 1px solid var(--mantine-primary-color-4);
+  background: var(--mantine-primary-color-light);
+  box-shadow: none;
+
+  .quantityButton {
+    background: var(--mantine-color-body);
+    border-color: var(--mantine-primary-color-5);
+    color: var(--mantine-primary-color-filled);
+  }
+
+  .quantityButton:disabled {
+    background: var(--mantine-color-default);
+    color: var(--mantine-color-dimmed);
+  }
+}
+
+.badge {
+  white-space: normal;
+  line-height: 1.2;
+  font-weight: 600;
+  border-width: 1px;
+  height: 18px;
+  padding-top: 5px;
+  padding-bottom: 0.2rem;
+}
+
+.benefitBadge {
+  background: var(--mantine-color-body);
+  border-color: var(--mantine-primary-color-6);
+  color: var(--mantine-primary-color-filled);
+}
+
+.requirementBadge {
+  background: var(--mantine-color-default);
+  border-color: var(--mantine-color-default-border);
+  color: var(--mantine-color-text);
+}
+
+.quantityButton {
+  min-width: 40px;
+  min-height: 40px;
+  padding-inline: 0;
+  border: 1px solid var(--mantine-color-default-border);
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantityButton :global(.mantine-Button-label) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  width: 100%;
+}
+
+.quantityValue {
+  min-width: 32px;
+  text-align: center;
+}
+
 .eventDetailsScroll {
   display: flex;
   gap: 1rem;
@@ -162,6 +252,12 @@
 @media (max-width: 48em) {
   .desktopGrid {
     display: none;
+  }
+
+  .mobileSelectable {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
   }
 
   .mobileScroll {
@@ -215,5 +311,16 @@
   .ticket :global(.mantine-Button-root) {
     min-height: 30px;
     padding-inline: 0.5rem;
+  }
+
+  .compactTicket {
+    min-height: auto;
+    padding: 0.75rem 0.875rem;
+  }
+
+  .compactTicket :global(.mantine-Button-root) {
+    min-height: 40px;
+    min-width: 40px;
+    padding-inline: 0;
   }
 }

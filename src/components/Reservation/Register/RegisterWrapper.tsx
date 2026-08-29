@@ -463,7 +463,7 @@ export function RegisterWrapper() {
     <Container fluid className={styles.container}>
       <RegistrationStepIndicator />
       {stage !== 'WELCOME' ? (
-        <Container size="md" mt="xs">
+        <Container size="md" mt="xs" px={0}>
           <SupportCta data={pageConfig.supportCta.help} showIcon collapsed />
         </Container>
       ) : null}

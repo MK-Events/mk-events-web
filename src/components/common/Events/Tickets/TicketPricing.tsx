@@ -1,4 +1,5 @@
 import {
+  Badge,
   Button,
   Center,
   Divider,
@@ -36,23 +37,168 @@ interface TicketCardProps {
   selectedQuantity?: number;
   maxQuantity?: number;
   soldOut?: boolean;
+  compact?: boolean;
   onSelect?: (ticket: Ticket) => void;
   onQuantityChange?: (ticket: Ticket, quantity: number) => void;
 }
 
 function TicketCard({
   ticket,
-  selectable,
+  selectable = false,
   selected,
   selectedQuantity = 0,
   maxQuantity,
   soldOut = false,
+  compact = false,
   onSelect,
   onQuantityChange,
 }: TicketCardProps) {
   const pageConfig = usePageConfig('eventDetails');
   const includedBenefits = ticket.includedBenefits;
   const config = useAppConfig();
+
+  const getRequirement = (requirement: string, selectable: boolean) => {
+    const requirementDescription =
+      config.event.ticketRequirementDescriptions[
+        requirement as keyof typeof config.event.ticketRequirementDescriptions
+      ];
+    const requirementLabel =
+      config.event.ticketRequirementLabels[
+        requirement as keyof typeof config.event.ticketRequirementLabels
+      ];
+    return selectable ? requirementLabel : requirementDescription;
+  };
+
+  const attendeeLabel = ticket.attendeeType
+    ? config.event.attendeeLabels[ticket.attendeeType]
+    : 'General';
+
+  const quantityControl = (
+    <Group justify="center" align="center" gap={6} wrap="nowrap">
+      <Button
+        variant="light"
+        size="compact-sm"
+        radius="xl"
+        className={compact ? classes.quantityButton : undefined}
+        disabled={selectedQuantity === 0 || soldOut}
+        onClick={(e) => {
+          e.stopPropagation();
+          onQuantityChange?.(ticket, Math.max(0, selectedQuantity - 1));
+        }}
+      >
+        -
+      </Button>
+
+      <Text
+        size={compact ? 'md' : 'sm'}
+        fw={700}
+        c={selectedQuantity > 0 ? 'var(--mantine-primary-color-filled)' : 'dimmed'}
+        px="xs"
+        className={compact ? classes.quantityValue : undefined}
+        style={compact ? undefined : { minWidth: 64, textAlign: 'center' }}
+      >
+        {compact ? selectedQuantity : `${selectedQuantity}/${maxQuantity ?? 0}`}
+      </Text>
+
+      <Button
+        variant="light"
+        size="compact-sm"
+        radius="xl"
+        className={compact ? classes.quantityButton : undefined}
+        disabled={soldOut || selectedQuantity >= (maxQuantity ?? Number.MAX_SAFE_INTEGER)}
+        onClick={(e) => {
+          e.stopPropagation();
+          onQuantityChange?.(
+            ticket,
+            Math.min(maxQuantity ?? Number.MAX_SAFE_INTEGER, selectedQuantity + 1)
+          );
+        }}
+      >
+        +
+      </Button>
+    </Group>
+  );
+
+  if (compact) {
+    return (
+      <Paper
+        withBorder
+        radius="lg"
+        p="sm"
+        className={`${classes.ticket} ${classes.compactTicket} ${
+          selected ? classes.compactSelected : ''
+        } ${soldOut ? classes.soldOut : ''}`}
+        onClick={() => selectable && !soldOut && onSelect?.(ticket)}
+        style={{
+          cursor: selectable && !soldOut ? 'default' : 'not-allowed',
+        }}
+      >
+        <Stack gap="xs">
+          <Group justify="space-between" align="center" wrap="nowrap" gap="xs">
+            <Text fw={600} fz="sm" lh={1.2}>
+              {attendeeLabel}
+            </Text>
+
+            <Text fw={800} fz="sm" c="var(--mantine-primary-color-filled)">
+              {ticket.price === 0 ? 'FREE' : `₹${ticket.price.toLocaleString('en-IN')}`}
+            </Text>
+          </Group>
+
+          {includedBenefits.length ? (
+            <Group gap={6}>
+              {includedBenefits.map((benefit) => (
+                <Badge
+                  key={benefit}
+                  size="xs"
+                  radius="sm"
+                  variant="light"
+                  className={`${classes.badge} ${classes.benefitBadge}`}
+                >
+                  {benefit}
+                </Badge>
+              ))}
+            </Group>
+          ) : null}
+
+          {ticket.requirements?.length ? (
+            <Group gap={6}>
+              {ticket.requirements.map((requirement: string) => (
+                <Badge
+                  key={requirement}
+                  size="xs"
+                  radius="sm"
+                  variant="light"
+                  className={`${classes.badge} ${classes.requirementBadge}`}
+                >
+                  {getRequirement(requirement, selectable)}
+                </Badge>
+              ))}
+            </Group>
+          ) : null}
+
+          <Group justify="space-between" align="center" mt={4}>
+            {soldOut ? (
+              <Text size="xs" fw={700} c="red">
+                Sold Out
+              </Text>
+            ) : (
+              <Text size="xs" c="dimmed">
+                Quantity
+              </Text>
+            )}
+
+            {quantityControl}
+          </Group>
+
+          {maxQuantity !== undefined && maxQuantity <= 0 && !soldOut ? (
+            <Text size="xs" c="red">
+              This ticket is restricted by the current selection rules.
+            </Text>
+          ) : null}
+        </Stack>
+      </Paper>
+    );
+  }
 
   return (
     <Paper
@@ -71,7 +217,7 @@ function TicketCard({
         {/* Header */}
         <Stack gap={4} align="center">
           <Text fw={600} fz="lg">
-            {ticket.attendeeType ? config.event.attendeeLabels[ticket.attendeeType] : 'General'}
+            {attendeeLabel}
           </Text>
         </Stack>
 
@@ -124,8 +270,8 @@ function TicketCard({
               </Group>
 
               <List spacing={4} size="xs">
-                {ticket.requirements.map((requirement) => (
-                  <List.Item key={requirement}>{requirement}</List.Item>
+                {ticket.requirements.map((requirement: string) => (
+                  <List.Item key={requirement}>{getRequirement(requirement, selectable)}</List.Item>
                 ))}
               </List>
             </Stack>
@@ -159,48 +305,7 @@ function TicketCard({
                   </Group>
                 </Group>
               ) : (
-                <Group justify="center" align="center" gap={6}>
-                  <Button
-                    variant="light"
-                    size="compact-sm"
-                    radius="xl"
-                    disabled={selectedQuantity === 0 || soldOut}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onQuantityChange?.(ticket, Math.max(0, selectedQuantity - 1));
-                    }}
-                  >
-                    -
-                  </Button>
-
-                  <Text
-                    size="sm"
-                    fw={700}
-                    c={selectedQuantity > 0 ? 'var(--mantine-primary-color-filled)' : 'dimmed'}
-                    px="xs"
-                    style={{ minWidth: 64, textAlign: 'center' }}
-                  >
-                    {selectedQuantity}/{maxQuantity ?? 0}
-                  </Text>
-
-                  <Button
-                    variant="light"
-                    size="compact-sm"
-                    radius="xl"
-                    disabled={
-                      soldOut || selectedQuantity >= (maxQuantity ?? Number.MAX_SAFE_INTEGER)
-                    }
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onQuantityChange?.(
-                        ticket,
-                        Math.min(maxQuantity ?? Number.MAX_SAFE_INTEGER, selectedQuantity + 1)
-                      );
-                    }}
-                  >
-                    +
-                  </Button>
-                </Group>
+                quantityControl
               )}
 
               {maxQuantity !== undefined && maxQuantity <= 0 && !soldOut ? (
@@ -241,7 +346,7 @@ export function TicketPricing({
     }
   });
 
-  const renderedTickets = filteredTickets.map((ticket) => {
+  const renderTicketCard = (ticket: Ticket, compact = false) => {
     const isSoldOut = ticket.availableQuantity <= ticket.soldCount;
     const selectedQuantity =
       selectedTickets.find((selection) => selection.ticketId === ticket.id)?.quantity ?? 0;
@@ -291,6 +396,7 @@ export function TicketPricing({
         selectedQuantity={selectedQuantity}
         maxQuantity={isSoldOut ? 0 : maxQuantity}
         soldOut={isSoldOut}
+        compact={compact}
         onSelect={(selectedTicketItem) => {
           const currentQuantity =
             selectedTickets.find((selection) => selection.ticketId === selectedTicketItem.id)
@@ -310,19 +416,53 @@ export function TicketPricing({
         onQuantityChange={onTicketQuantityChange}
       />
     );
-  });
+  };
+
+  const renderedTickets = filteredTickets.map((ticket) => renderTicketCard(ticket));
+  const paidTickets = filteredTickets.filter((ticket) => ticket.price > 0);
+  const freeEntryTickets = filteredTickets.filter((ticket) => ticket.price === 0);
 
   const isEventDetailsScrollable = usage === 'eventDetails';
+  const showSelectableMobileView = selectable && !isEventDetailsScrollable;
+  const showScrollableMobileView = isEventDetailsScrollable || !selectable;
 
   return (
     <Stack gap={'xxl'}>
       {usage === 'eventDetails' ? <Title order={3}>{config.sections.tickets.title}</Title> : null}
 
-      <div
-        className={`${classes.mobileScroll} ${isEventDetailsScrollable ? classes.eventDetailsScroll : ''}`}
-      >
-        {renderedTickets}
-      </div>
+      {showScrollableMobileView ? (
+        <div
+          className={`${classes.mobileScroll} ${isEventDetailsScrollable ? classes.eventDetailsScroll : ''}`}
+        >
+          {renderedTickets}
+        </div>
+      ) : null}
+
+      {showSelectableMobileView ? (
+        <div className={classes.mobileSelectable}>
+          {paidTickets.length ? (
+            <Stack gap="sm" className={classes.mobileSection}>
+              <Text size="sm" fw={700} className={classes.mobileSectionTitle}>
+                Paid Tickets
+              </Text>
+
+              <Stack gap="sm">{paidTickets.map((ticket) => renderTicketCard(ticket, true))}</Stack>
+            </Stack>
+          ) : null}
+
+          {freeEntryTickets.length ? (
+            <Stack gap="sm" className={`${classes.mobileSection} ${classes.freeEntrySection}`}>
+              <Text size="sm" fw={700} className={classes.mobileSectionTitle}>
+                Free Entry
+              </Text>
+
+              <Stack gap="sm">
+                {freeEntryTickets.map((ticket) => renderTicketCard(ticket, true))}
+              </Stack>
+            </Stack>
+          ) : null}
+        </div>
+      ) : null}
 
       {!isEventDetailsScrollable && (
         <SimpleGrid

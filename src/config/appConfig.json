@@ -33,6 +33,20 @@
       "Corporate": "Corporate Employee",
       "AdultPremium": "Adult Premium",
       "AdultVIP": "Adult VIP"
+    },
+    "ticketRequirementLabels": {
+      "collegeIdRequired": "College ID Required",
+      "schoolIdRequired": "School ID Required",
+      "ageProofRequired": "Age Proof Required",
+      "corporateIdRequired": "Corporate ID Required",
+      "parentAdultAccompanimentRequired": "Parent/Adult Accompaniment Required"
+    },
+    "ticketRequirementDescriptions": {
+      "collegeIdRequired": "A valid college ID must be presented at the event entrance.",
+      "schoolIdRequired": "A valid school ID must be presented at the event entrance.",
+      "ageProofRequired": "A valid age proof document must be presented at the event entrance.",
+      "corporateIdRequired": "A valid corporate ID must be presented at the event entrance.",
+      "parentAdultAccompanimentRequired": "Children under 18 must be accompanied by a parent or adult guardian."
     }
   },
   "misc": {

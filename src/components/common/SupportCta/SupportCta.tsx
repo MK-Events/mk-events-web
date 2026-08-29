@@ -4,6 +4,8 @@ import { Button, Container, Group, Paper, Stack, Text } from '@mantine/core';
 import { IconChevronDown, IconChevronUp, IconBrandWhatsapp as Whatsapp } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 
+import styles from './SupportCta.module.scss';
+
 export interface SupportCtaConfig {
   title: string;
   description: string;
@@ -27,7 +29,7 @@ export function SupportCta({ data, showIcon = false, collapsed = false }: Suppor
 
   if (collapsed && !expanded) {
     return (
-      <Container mb="md" p={0} style={{ maxWidth: '900px' }}>
+      <Container mb="md" p={0} className={styles.wrapper}>
         <Paper withBorder radius="md" p="xs">
           <Button
             variant="subtle"
