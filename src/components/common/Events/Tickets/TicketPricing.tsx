@@ -192,7 +192,7 @@ function TicketCard({
 
           {maxQuantity !== undefined && maxQuantity <= 0 && !soldOut ? (
             <Text size="xs" c="red">
-              This ticket is restricted by the current selection rules.
+              Select a paid ticket to enable free child tickets.
             </Text>
           ) : null}
         </Stack>
