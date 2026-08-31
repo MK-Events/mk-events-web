@@ -77,9 +77,6 @@ export function ReviewStep({ data, onBack, onMakePayment, loading = false }: Rev
                   </Group>
                 </Group>
 
-                <Text size="sm" c="dimmed">
-                  {contact.age} years · {contact.gender}
-                </Text>
               </div>
             </Stack>
           )}

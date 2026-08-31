@@ -5,7 +5,6 @@ import {
   Card,
   Group,
   Modal,
-  NumberInput,
   Select,
   Stack,
   Text,
@@ -44,7 +43,6 @@ export function ContactStep({
   const {
     sections: { contactStep },
   } = usePageConfig('registration');
-  const genderOptions = contactStep.genderOptions;
   const countryCodeOptions = contactStep.countryCodeOptions;
   const [contact, setContact] = useState<PartialContact>({
     ...defaultContact,
@@ -223,30 +221,6 @@ export function ContactStep({
               autoComplete="name"
               onChange={(event) => updateReservationContact('name', event.currentTarget.value)}
             />
-
-            <Group grow align="flex-start">
-              <NumberInput
-                label={contactStep.ageLabel}
-                placeholder={contactStep.agePlaceholder}
-                min={1}
-                max={120}
-                value={contact.age}
-                onChange={(value) => updateReservationContact('age', Number(value ?? 0))}
-              />
-
-              <Select
-                label={contactStep.genderLabel}
-                placeholder={contactStep.genderPlaceholder}
-                data={genderOptions}
-                value={contact.gender}
-                searchable
-                nothingFoundMessage={contactStep.genderNotFoundMessage}
-                onChange={(value) =>
-                  updateReservationContact('gender', (value ?? 'Male') as PartialContact['gender'])
-                }
-                clearable
-              />
-            </Group>
 
             <Group gap="xs" align="flex-start">
               <Select
