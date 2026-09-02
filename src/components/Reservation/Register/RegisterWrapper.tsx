@@ -79,6 +79,17 @@ export function RegisterWrapper() {
       setResumePromptShown(false);
       setHasExistingReservationToResume(false);
     }
+
+    if (typeof window !== 'undefined') {
+      const scrollToTop = () => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      };
+
+      scrollToTop();
+      requestAnimationFrame(scrollToTop);
+    }
   }, [reservationData.reservation.stage]);
 
   const {

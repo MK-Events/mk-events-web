@@ -257,12 +257,7 @@
   .mobileSelectable {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
-
-    .compactTicket {
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
-      border-color: #dbe4f0;
-    }
+    gap: 1.5rem;
   }
 
   .mobileScroll {
@@ -321,6 +316,8 @@
   .compactTicket {
     min-height: auto;
     padding: 0.75rem 0.875rem;
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.12);
+    border-color: rgba(148, 163, 184, 0.45);
   }
 
   .compactTicket :global(.mantine-Button-root) {

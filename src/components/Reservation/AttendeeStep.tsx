@@ -262,7 +262,9 @@ export function AttendeeStep({
                       <IconUser size={17} />
                     </div>
 
-                    <Text fw={700}>{ticket.attendeeType || attendeeStep.attendeeLabel}</Text>
+                    <Text className={styles.ticketTypeTitle}>
+                      {ticket.attendeeType || attendeeStep.attendeeLabel}
+                    </Text>
                   </Group>
 
                   <Text size="xs" c="dimmed">
@@ -282,7 +284,9 @@ export function AttendeeStep({
                     return (
                       <div key={`${attendee.reservationTicketId}-${absoluteIndex}`} className={styles.attendee}>
                         <Stack gap="md">
-                          <Text fw={600}>Attendee {attendeeIndex + 1}</Text>
+                          <Text className={styles.attendeeIndexLabel}>
+                            Attendee {attendeeIndex + 1}
+                          </Text>
 
                           <TextInput
                             label={attendeeStep.fullNameLabel}
