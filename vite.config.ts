@@ -4,8 +4,21 @@ import { fileURLToPath } from 'url';
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
+const resolvedApiTarget = process.env.VITE_API_URL ?? 'http://localhost:3000';
+
 export default defineConfig({
   base: '/',
+  envPrefix: ['VITE_', 'NODE_'],
+  server: {
+    proxy: {
+      '/api': {
+        target: resolvedApiTarget,
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
   resolve: { tsconfigPaths: true },
   plugins: [
     react(),
