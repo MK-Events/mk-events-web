@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import {
   Button,
   Card,
+  Divider,
   Group,
   NumberInput,
   Select,
@@ -272,17 +273,14 @@ export function AttendeeStep({
                   </Text>
                 </Group>
 
+                <Divider className={styles.groupDivider} />
+
                 <Stack gap="md">
                   {groupAttendees.map((attendee, attendeeIndex) => {
                     const absoluteIndex = attendees.findIndex((item) => item === attendee);
 
                     return (
-                      <Card
-                        key={`${attendee.reservationTicketId}-${absoluteIndex}`}
-                        withBorder
-                        radius="md"
-                        className={styles.attendee}
-                      >
+                      <div key={`${attendee.reservationTicketId}-${absoluteIndex}`} className={styles.attendee}>
                         <Stack gap="md">
                           <Text fw={600}>Attendee {attendeeIndex + 1}</Text>
 
@@ -320,7 +318,7 @@ export function AttendeeStep({
                             />
                           </Group>
                         </Stack>
-                      </Card>
+                      </div>
                     );
                   })}
                 </Stack>

@@ -18,16 +18,20 @@
 }
 
 .groupSection {
-  border: 1px solid #e9ecef;
-  background: #f8f9fa;
-  border-radius: 18px;
-  padding: 16px;
+  padding: 4px 0;
+
+  &:not(:last-child) {
+    margin-bottom: 22px;
+  }
 }
 
 .groupHeader {
-  margin-bottom: 12px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid #e9ecef;
+  margin-bottom: 10px;
+}
+
+.groupDivider {
+  border-color: #e9ecef;
+  margin-bottom: 14px;
 }
 
 .icon {
@@ -42,8 +46,7 @@
 }
 
 .attendee {
-  background: #fff;
-  padding: 16px;
+  padding: 6px 2px;
 }
 
 .footer {
