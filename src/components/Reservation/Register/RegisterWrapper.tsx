@@ -41,6 +41,17 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import styles from './RegisterWrapper.module.scss';
 
+const hasSavedReservationProgress = (reservationResponse: ReservationResponse) =>
+  Boolean(
+    reservationResponse?.reservation?.contact ||
+      reservationResponse?.reservation?.tickets?.length ||
+      reservationResponse?.reservation?.attendees?.length ||
+      reservationResponse?.summary?.ticketBreakdown?.length
+  );
+
+const isResumableReservationStage = (stage?: string) =>
+  Boolean(stage && stage !== 'WELCOME' && stage !== 'PAYMENT_PENDING');
+
 export function RegisterWrapper() {
   const { slug } = useParams();
   const navigate = useNavigate();
@@ -56,6 +67,7 @@ export function RegisterWrapper() {
   } | null>(null);
   const removeExistingProgressRef = useRef(removeExistingProgress);
   const [resumePromptShown, setResumePromptShown] = useState(false);
+  const [hasExistingReservationToResume, setHasExistingReservationToResume] = useState(false);
 
   const setRemoveExistingProgressWithRef = (value: boolean) => {
     removeExistingProgressRef.current = value;
@@ -65,6 +77,7 @@ export function RegisterWrapper() {
   useEffect(() => {
     if (reservationData.reservation.stage === 'WELCOME') {
       setResumePromptShown(false);
+      setHasExistingReservationToResume(false);
     }
   }, [reservationData.reservation.stage]);
 
@@ -82,18 +95,7 @@ export function RegisterWrapper() {
   const [continueReservation, { isLoading: isContinueReservationLoading }] =
     useContinueReservationMutation();
   const [backReservation, { isLoading: isBackReservationLoading }] = useBackReservationMutation();
-  const hasExistingResumeData = Boolean(
-    reservationData?.reservation?.id &&
-    (reservationData.reservation.contact ||
-      reservationData.reservation.tickets?.length ||
-      reservationData.reservation.attendees?.length ||
-      reservationData.summary?.ticketBreakdown?.length)
-  );
-  const canShowResumeOption =
-    !resumePromptShown &&
-    hasExistingResumeData &&
-    reservationData.reservation.stage !== 'WELCOME' &&
-    reservationData.reservation.stage !== 'PAYMENT_PENDING';
+  const canShowResumeOption = !resumePromptShown && hasExistingReservationToResume;
 
   const payment = useReservationPayment({
     reservationId: reservationData?.reservation?.id,
@@ -145,6 +147,13 @@ export function RegisterWrapper() {
       if (removeExistingProgressRef.current) {
         dispatch(resetAll());
       }
+
+      const shouldShowResumePrompt =
+        !removeExistingProgressRef.current &&
+        isResumableReservationStage(response?.reservation?.stage) &&
+        hasSavedReservationProgress(response);
+
+      setHasExistingReservationToResume(shouldShowResumePrompt);
 
       dispatch(setReservationData(response));
     } catch (error: any) {
@@ -481,9 +490,11 @@ export function RegisterWrapper() {
           reservation={reservationData}
           onContinue={() => {
             setResumePromptShown(true);
+            setHasExistingReservationToResume(false);
           }}
           onStartFresh={() => {
             setResumePromptShown(true);
+            setHasExistingReservationToResume(false);
             setRemoveExistingProgressWithRef(true);
             handleNewReservationCreation();
           }}
