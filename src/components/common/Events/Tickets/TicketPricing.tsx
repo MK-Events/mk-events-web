@@ -446,7 +446,7 @@ export function TicketPricing({
                 Paid Tickets
               </Text>
 
-              <Stack gap="sm">{paidTickets.map((ticket) => renderTicketCard(ticket, true))}</Stack>
+              <Stack gap="md">{paidTickets.map((ticket) => renderTicketCard(ticket, true))}</Stack>
             </Stack>
           ) : null}
 
@@ -456,7 +456,7 @@ export function TicketPricing({
                 Free Entry
               </Text>
 
-              <Stack gap="sm">
+              <Stack gap="md">
                 {freeEntryTickets.map((ticket) => renderTicketCard(ticket, true))}
               </Stack>
             </Stack>
