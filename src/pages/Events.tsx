@@ -1,15 +1,43 @@
 import { Container, Stack } from '@mantine/core';
-import { EmptyState, ErrorScreen, EventGrid, Hero, Loader } from '@mk/components';
+import {
+  EmptyState,
+  ErrorScreen,
+  EventGrid,
+  FeaturedEventCarousel,
+  Hero,
+  Loader,
+} from '@mk/components';
 import { usePageConfig } from '@mk/hooks/usePageConfig';
-import { useGetEventsQuery } from '@mk/store/api/events.api';
+import { useGetEventsQuery, useGetFeaturedEventsQuery } from '@mk/store/api/events.api';
 
 import NotFound from './NotFound';
 
 export function Events() {
   const config = usePageConfig('events');
-  const { data: events, isLoading, error, refetch, isFetching } = useGetEventsQuery();
+  const {
+    data: events,
+    isLoading: isEventsQueryLoading,
+    error: eventsQueryError,
+    refetch: refetchEvents,
+    isFetching: isEventsQueryFetching,
+  } = useGetEventsQuery();
 
-  const featuredEvents = events?.filter((event) => event.featured);
+  const {
+    data: featuredEvents = [],
+    isLoading: isFeaturedEventsQueryLoading,
+    error: featuredEventsQueryError,
+    refetch: refetchFeaturedEvents,
+    isFetching: isFeaturedEventsQueryFetching,
+  } = useGetFeaturedEventsQuery();
+
+  const isLoading = isEventsQueryLoading || isFeaturedEventsQueryLoading;
+  const error = eventsQueryError || featuredEventsQueryError;
+  const refetch = () => {
+    refetchEvents();
+    refetchFeaturedEvents();
+  };
+  const isFetching = isEventsQueryFetching || isFeaturedEventsQueryFetching;
+
   const upcomingEvents = events?.filter(
     (event) => new Date(event.startDate).getTime() > Date.now() && !event.featured
   );
@@ -37,11 +65,13 @@ export function Events() {
 
       <Container size="xl" py="xl">
         <Stack gap={80}>
-          <EventGrid
+          {/* <EventGrid
             title={config.sections.featuredEvents.title}
             subtitle={config.sections.featuredEvents.caption}
             events={featuredEvents}
-          />
+          /> */}
+
+          {featuredEvents.length > 0 && <FeaturedEventCarousel events={featuredEvents} />}
 
           <EventGrid
             title={config.sections.upcomingEvents.title}

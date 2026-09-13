@@ -4,7 +4,6 @@ import {
   EventDetails,
   Events,
   Gallery,
-  Home,
   NotFound,
   PrivacyPolicy,
   RefundPolicy,
@@ -20,7 +19,7 @@ export const router = createBrowserRouter([
   {
     element: <MainLayout />,
     children: [
-      { path: '/', element: <Home /> },
+      { path: '/', element: <Events /> },
       { path: '/events', element: <Events /> },
       { path: '/events/:slug', element: <EventDetails /> },
       { path: '/gallery', element: <Gallery /> },

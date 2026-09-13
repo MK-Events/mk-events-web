@@ -126,10 +126,6 @@
         "label": "Home"
       },
       {
-        "link": "/events",
-        "label": "Events"
-      },
-      {
         "link": "/gallery",
         "label": "Gallery"
       },
@@ -154,7 +150,7 @@
         "links": [
           {
             "label": "Home",
-            "link": "/"
+            "link": "/events"
           },
           {
             "label": "About",

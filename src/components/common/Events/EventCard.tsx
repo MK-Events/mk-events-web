@@ -16,7 +16,7 @@ export function EventCard({ event }: Props) {
     eventState === 'ongoing' ? 'Live' : eventState === 'completed' ? 'Completed' : 'Upcoming';
 
   return (
-    <Card withBorder radius="xl" padding="md" h="100%">
+    <Card withBorder radius="lg" padding="md" h="100%">
       <Card.Section>
         <Image src={event.coverImage.src} h={220} />
       </Card.Section>
@@ -35,9 +35,11 @@ export function EventCard({ event }: Props) {
         </Stack>
 
         <Group justify={'space-between'}>
-          <Button component={Link} to={`/register/${event.slug}`} variant={'filled'}>
-            Register Now
-          </Button>
+          {event.endDate > new Date().toISOString() && (
+            <Button component={Link} to={`/register/${event.slug}`} variant={'filled'}>
+              Register Now
+            </Button>
+          )}
           <Button
             component={Link}
             to={`/events/${event.slug}`}
