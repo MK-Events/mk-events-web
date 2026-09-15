@@ -18,6 +18,20 @@ export interface Asset {
   src: string;
 
   title: string;
+
+  alt?: string;
+
+  thumbnail?: string | null;
+}
+
+export interface EventGallery {
+  id: string;
+
+  name: string;
+
+  slug: string;
+
+  items: Asset[];
 }
 
 export interface Pagination {

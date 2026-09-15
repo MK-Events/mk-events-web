@@ -111,7 +111,7 @@ export function EventDetails() {
           <section>
             {event.gallery.length > 0 && (
               <GallerySection
-                images={event.gallery}
+                galleries={event.gallery}
                 usage={'EventDetails'}
                 gallery={{
                   title: config.sections.gallery.title,
