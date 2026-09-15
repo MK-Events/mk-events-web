@@ -12,11 +12,14 @@ interface Props {
 export function EventCTA({ slug, eventState, registrationState, usage }: Props) {
   const textAlign = usage === 'EventDetails' ? 'center' : 'left';
   if (eventState === 'completed') {
-    return (
-      <Button component={Link} to={`/events/${slug}`} variant="light" radius="xl">
-        View Event Details
-      </Button>
-    );
+    if (usage === 'FeaturedEvent') {
+      return (
+        <Button component={Link} to={`/events/${slug}`} variant="light" radius="xl">
+          View Event Details
+        </Button>
+      );
+    }
+    return null;
   }
 
   if (registrationState === 'soldOut') {

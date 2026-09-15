@@ -1,6 +1,6 @@
 import type { AppIconName } from '@mk/utils';
 
-import type { Asset, GalleryImage } from './Gallery.type';
+import type { Asset, EventGallery, GalleryImage } from './Gallery.type';
 import type { Hero } from './Hero.type';
 import type { Ticket } from './Tickets.type';
 
@@ -25,7 +25,7 @@ export interface Event {
   location: EventLocation;
   registration: Registration;
 
-  gallery: Asset[];
+  gallery: EventGallery[];
   highlights: EventHighlight[];
   schedule: EventScheduleItem[];
   faqs: FAQ[];
