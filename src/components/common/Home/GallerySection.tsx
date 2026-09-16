@@ -34,11 +34,48 @@ export function GallerySection({ gallery, usage, images, galleries }: GalleryPro
 
   if (!imageList?.length && !galleries?.some(({ items }) => items.length)) return null;
 
-  const masonry = (galleryImages: Asset[]) => (
+  const getYoutubeEmbedUrl = (src: string) => {
+    try {
+      const url = new URL(src);
+
+      if (url.hostname === 'youtu.be') {
+        return `https://www.youtube.com/embed/${url.pathname.slice(1)}`;
+      }
+
+      if (url.hostname.endsWith('youtube.com')) {
+        if (url.pathname === '/watch') {
+          const videoId = url.searchParams.get('v');
+          return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
+        }
+
+        const videoId = url.pathname.split('/').filter(Boolean).at(-1);
+        return videoId && ['/embed', '/live', '/shorts'].some((path) => url.pathname.startsWith(path))
+          ? `https://www.youtube.com/embed/${videoId}`
+          : null;
+      }
+    } catch {
+      return null;
+    }
+
+    return null;
+  };
+
+  const masonry = (galleryImages: Asset[], isYoutubeGallery = false) => (
     <div className={styles.masonry}>
       {galleryImages.map((image) => (
-          <div key={image.id} className={styles.item}>
-          <Image src={image.thumbnail} radius="xs" alt={image.alt ?? image.title} />
+        <div key={image.id} className={styles.item}>
+          {isYoutubeGallery ? (
+            <iframe
+              className={styles.video}
+              src={getYoutubeEmbedUrl(image.src) ?? image.src}
+              title={image.title}
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          ) : (
+            <Image src={image.thumbnail} radius="xs" alt={image.alt ?? image.title} />
+          )}
         </div>
       ))}
     </div>
@@ -49,7 +86,9 @@ export function GallerySection({ gallery, usage, images, galleries }: GalleryPro
       {galleries.map((galleryGroup) => (
         <Accordion.Item key={galleryGroup.id} value={galleryGroup.id}>
           <Accordion.Control className={styles.galleryName}>{galleryGroup.name}</Accordion.Control>
-          <Accordion.Panel>{masonry(galleryGroup.items)}</Accordion.Panel>
+          <Accordion.Panel>
+            {masonry(galleryGroup.items, galleryGroup.name.toLowerCase() === 'youtube')}
+          </Accordion.Panel>
         </Accordion.Item>
       ))}
     </Accordion>
