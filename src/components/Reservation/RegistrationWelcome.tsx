@@ -1,5 +1,5 @@
 import { Badge, Button, Card, Group, Image, Stack, Text, Title, Tooltip } from '@mantine/core';
-import { usePageConfig } from '@mk/hooks';
+import { useAppConfig, usePageConfig } from '@mk/hooks';
 import type { Event } from '@mk/types';
 import {
   IconArrowRight,
@@ -22,8 +22,17 @@ export function RegistrationWelcome({ event, onBegin, loading = false }: Registr
   const registration = event.registration;
   const {
     sections: { welcomeScreen },
-    otherRegistrationPlatforms,
+    district,
+    bookMyShow,
   } = usePageConfig('registration');
+  const {
+    global: { districtLogo, bookMyShowLogo },
+  } = useAppConfig();
+
+  const isDistrictButtonEnabled = event.district.length > 0 && district.enabled;
+  const isBookMyShowButtonEnabled = event.bookMyShow.length > 0 && bookMyShow.enabled;
+
+  console.log(isDistrictButtonEnabled, isBookMyShowButtonEnabled);
 
   const lowestNonZeroTicketPrice = event.tickets.reduce<number>((lowest, ticket) => {
     if (ticket.price > 0 && ticket.price < lowest) {
@@ -90,43 +99,69 @@ export function RegistrationWelcome({ event, onBegin, loading = false }: Registr
                 </Stack>
               </Group>
 
-              <div className={styles.otherWaysRow}>
-                {otherRegistrationPlatforms.length > 0 ? (
-                  <>
-                    <Text size={'sm'} c="dimmed">
-                      {welcomeScreen.otherWaysToRegisterLabel}
-                    </Text>
+              {isDistrictButtonEnabled || isBookMyShowButtonEnabled ? (
+                <div className={styles.otherWaysRow}>
+                  <Text size={'sm'} c="dimmed">
+                    {welcomeScreen.otherWaysToRegisterLabel}
+                  </Text>
 
-                    <div className={styles.platformList}>
-                      {otherRegistrationPlatforms.map((platform, index: number) => (
-                        <Tooltip
-                          key={`${platform.title}-${index}`}
-                          label={platform.description}
-                          position="top"
-                          withArrow
+                  <div className={styles.platformList}>
+                    {isDistrictButtonEnabled ? (
+                      <Tooltip
+                        key={district.title}
+                        label={district.description}
+                        position="top"
+                        withArrow
+                      >
+                        <a
+                          href={event.district}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            color: district.color,
+                            textDecoration: 'none',
+                          }}
                         >
-                          <a
-                            href={platform.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={{
-                              color: platform.color,
-                              textDecoration: 'none',
-                            }}
-                          >
-                            <Group gap={6} align="center" wrap="nowrap">
-                              <Text size={'sm'} fw={600} c={'dimmed'}>
-                                {platform.title}
-                              </Text>
-                              <IconArrowRight size={18} />
-                            </Group>
-                          </a>
-                        </Tooltip>
-                      ))}
-                    </div>
-                  </>
-                ) : null}
-              </div>
+                          <Button color={district.color} radius="sm" size="lg">
+                            <img
+                              src={districtLogo}
+                              alt={district.registerButtonLabel}
+                              className={styles.platformIcon}
+                            />
+                          </Button>
+                        </a>
+                      </Tooltip>
+                    ) : null}
+
+                    {isBookMyShowButtonEnabled ? (
+                      <Tooltip
+                        key={bookMyShow.title}
+                        label={bookMyShow.description}
+                        position="top"
+                        withArrow
+                      >
+                        <a
+                          href={event.bookMyShow}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            color: bookMyShow.color,
+                            textDecoration: 'none',
+                          }}
+                        >
+                          <Button color={bookMyShow.color} radius="sm" size="lg">
+                            <img
+                              src={bookMyShowLogo}
+                              alt={bookMyShow.registerButtonLabel}
+                              className={styles.platformIcon}
+                            />
+                          </Button>
+                        </a>
+                      </Tooltip>
+                    ) : null}
+                  </div>
+                </div>
+              ) : null}
             </Stack>
           </div>
 

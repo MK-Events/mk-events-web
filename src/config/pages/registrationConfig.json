@@ -171,14 +171,18 @@
       "message": "Unable to create reservation."
     }
   },
-  "otherRegistrationPlatforms": [
-    {
-      "title": "View event on District",
-      "description": "You will be redirected to the district registration page.",
-      "registerButtonLabel": "Register on District",
-      "url": "https://www.district.in/events/onam-blast-2026-aug6-2026-buy-tickets",
-      "color": "#9D00FF",
-      "enabled": true
-    }
-  ]
+  "district": {
+    "title": "View event on District",
+    "description": "You will be redirected to the district registration page.",
+    "registerButtonLabel": "Register on District",
+    "color": "#8201fbff",
+    "enabled": true
+  },
+  "bookMyShow": {
+    "title": "View event on BookMyShow",
+    "description": "You will be redirected to the BookMyShow registration page.",
+    "registerButtonLabel": "Register on BookMyShow",
+    "color": "#e8384dff",
+    "enabled": true
+  }
 }

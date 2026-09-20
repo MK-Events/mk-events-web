@@ -30,6 +30,8 @@ export interface Event {
   schedule: EventScheduleItem[];
   faqs: FAQ[];
   tickets: Ticket[];
+  district: string;
+  bookMyShow: string;
 }
 
 export type FeaturedEvent = Omit<

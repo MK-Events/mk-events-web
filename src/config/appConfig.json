@@ -21,7 +21,9 @@
       "lg": 128,
       "md": "72",
       "sm": 48
-    }
+    },
+    "districtLogo": "https://res.cloudinary.com/fvbsb1po/image/upload/v1789941010/district_zdpay9.svg",
+    "bookMyShowLogo": "https://res.cloudinary.com/fvbsb1po/image/upload/v1789941028/book_my_show_w8msi6.svg"
   },
   "event": {
     "attendeeLabels": {
