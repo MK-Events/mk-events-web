@@ -16,6 +16,7 @@ import { useAppConfig } from '@mk/hooks';
 import { usePageConfig } from '@mk/hooks/usePageConfig';
 import type { Ticket, TicketFilterOptions } from '@mk/types';
 import { IconCheck, IconInfoCircle } from '@tabler/icons-react';
+import { useLayoutEffect, useRef } from 'react';
 
 import classes from './TicketPricing.module.scss';
 
@@ -205,6 +206,7 @@ function TicketCard({
       withBorder
       radius="xl"
       p="lg"
+      data-ticket-card="true"
       className={`${classes.ticket} ${selected ? classes.selected : ''} ${
         selectable ? classes.selectable : ''
       } ${soldOut ? classes.soldOut : ''}`}
@@ -283,7 +285,7 @@ function TicketCard({
         {/* Footer */}
         {selectable ? (
           <>
-            <Divider variant="dashed" />
+            {ticket.requirements?.length ? <Divider variant="dashed" /> : null}
 
             <Stack gap="xs">
               {soldOut ? (
@@ -345,6 +347,35 @@ export function TicketPricing({
         return true;
     }
   });
+  const eventDetailsContainerRef = useRef<HTMLDivElement | null>(null);
+
+  useLayoutEffect(() => {
+    if (usage !== 'eventDetails' || !eventDetailsContainerRef.current) {
+      return;
+    }
+
+    const cards = Array.from(
+      eventDetailsContainerRef.current.querySelectorAll('[data-ticket-card="true"]')
+    ) as HTMLElement[];
+
+    if (!cards.length) {
+      return;
+    }
+
+    const maxHeight = cards.reduce((largest, card) => Math.max(largest, card.offsetHeight), 0);
+
+    cards.forEach((card) => {
+      card.style.height = `${maxHeight}px`;
+      card.style.minHeight = `${maxHeight}px`;
+    });
+
+    return () => {
+      cards.forEach((card) => {
+        card.style.height = '';
+        card.style.minHeight = '';
+      });
+    };
+  }, [usage, filteredTickets.length]);
 
   const renderTicketCard = (ticket: Ticket, compact = false) => {
     const isSoldOut = ticket.availableQuantity <= ticket.soldCount;
@@ -432,6 +463,7 @@ export function TicketPricing({
 
       {showScrollableMobileView ? (
         <div
+          ref={isEventDetailsScrollable ? eventDetailsContainerRef : undefined}
           className={`${classes.mobileScroll} ${isEventDetailsScrollable ? classes.eventDetailsScroll : ''}`}
         >
           {renderedTickets}

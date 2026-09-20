@@ -32,7 +32,18 @@
       "Guest": "Guest",
       "Corporate": "Corporate Employee",
       "AdultPremium": "Adult Premium",
-      "AdultVIP": "Adult VIP"
+      "AdultVIP": "Adult VIP",
+      "FemalePremiumEarlyBird": "Female Premium Early Bird",
+      "MalePremiumEarlyBird": "Male Premium Early Bird",
+      "CouplePremiumEarlyBird": "Couple Premium Early Bird",
+      "FemalePremium": "Female Premium",
+      "MalePremium": "Male Premium",
+      "CouplePremium": "Couple Premium",
+      "FemalePremiumFinalRelease": "Female Premium Final Release",
+      "MalePremiumFinalRelease": "Male Premium Final Release",
+      "CouplePremiumFinalRelease": "Couple Premium Final Release",
+      "FemaleEventOnly": "Female Event Only",
+      "MaleEventOnly": "Male Event Only"
     },
     "ticketRequirementLabels": {
       "collegeIdRequired": "College ID Required",

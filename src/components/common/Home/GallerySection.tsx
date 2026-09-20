@@ -49,7 +49,8 @@ export function GallerySection({ gallery, usage, images, galleries }: GalleryPro
         }
 
         const videoId = url.pathname.split('/').filter(Boolean).at(-1);
-        return videoId && ['/embed', '/live', '/shorts'].some((path) => url.pathname.startsWith(path))
+        return videoId &&
+          ['/embed', '/live', '/shorts'].some((path) => url.pathname.startsWith(path))
           ? `https://www.youtube.com/embed/${videoId}`
           : null;
       }
